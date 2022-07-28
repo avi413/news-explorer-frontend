@@ -1,0 +1,42 @@
+.search-form {
+    position: relative;
+
+    min-width: 100%;
+}
+
+.search-form__input {
+    height: 64px;
+    width: 100%;
+    border-radius: 100px;
+    border: none;
+    box-sizing: border-box;
+    padding-left:24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.search-form__input:focus {
+    /* removing the input focus blue box. Put this on the form if you like. */
+    outline: none;
+}
+
+.search-form_button {
+    padding: 15px;
+    position: absolute;
+    right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .search-form__input {
+        height: 56px;
+    }
+}
+@media screen and (max-width: 535px) { 
+    .search-form { 
+        max-width: 100%;
+    }
+    .search-form_button {
+        position: inherit;
+    }
+}

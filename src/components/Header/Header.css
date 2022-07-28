@@ -1,0 +1,41 @@
+.header {
+    border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+    position: relative;
+    position: sticky;
+    color: #fff;
+    top: 0;
+    z-index: 2;
+}
+
+.header_dark {
+    color: #1A1B22;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    margin: auto 104px;
+}
+
+.header__logo {
+    font-family: RobotoSlab;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    .header__container {
+        margin: auto 40px;
+        height: 66px;
+    }
+
+}
+
+@media screen and (max-width: 535px) {
+    .header__container {
+        margin: auto 16px;
+    }
+}

@@ -1,0 +1,68 @@
+.button {
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 1);
+    background-color: Transparent;
+    cursor: pointer;
+    color: inherit;
+    border: 1px solid #fff;
+}
+
+.button_theme_dark {
+    border: 1px solid #1A1B22
+}
+
+.button_type_search {
+    background: rgba(47, 113, 229, 1);
+    height: 64px;
+    width: 168px;
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(47, 113, 229, 1);
+}
+
+.button_type_more {
+    height: 64px;
+    width: 288px;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(26, 27, 34, 1);
+
+}
+
+.button_type_login {
+    height: 48px;
+    width: 176px;
+    border: 1px solid #fff;
+
+}
+
+.button_type_logout {
+    height: 48px;
+    padding: 0 19px;
+}
+
+.button_type_disable {
+    height: 64px;
+    width: 360px;
+    background: rgba(230, 232, 235, 1);
+    color: rgba(182, 188, 191, 1);
+
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .button_type_search { 
+        height: 56px;
+        width: 160px;
+    }
+}
+
+@media screen and (max-width: 535px) { 
+    .button_type_search { 
+        margin-top: 32px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+}

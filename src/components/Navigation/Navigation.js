@@ -1,0 +1,27 @@
+import './Navigation.css';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
+
+function Navigation(props) {
+  const { colorChange } = props;
+  return (
+    <nav className='navigation'>
+      <Link className='navigation__link' to='/'>
+        Home
+      </Link>
+      <Link className='navigation__link' to='/saved-news'>
+        Saved articles
+      </Link>
+      {1 === 0 ? (
+        <Button title='Sign in' type='button_type_login' />
+      ) : (
+        <Button
+          title='profile'
+          type={`button_type_logout ${colorChange ? 'button_theme_dark' : ''}`}
+        />
+      )}
+    </nav>
+  );
+}
+
+export default Navigation;
