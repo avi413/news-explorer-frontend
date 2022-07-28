@@ -1,0 +1,30 @@
+.about{
+    color: black;
+    display: flex;
+    gap: 56px;
+    margin: 80px 104px;
+}
+
+.about__img {
+    height: 464px;
+    width: 464px;
+    left: 0px;
+    top: 0px;
+    border-radius: 1000px;  
+}
+
+.about__title {
+    margin-top: 51px;
+    font-family: Roboto Slab;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46px;
+}
+
+.about__desc{
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 600px;
+}

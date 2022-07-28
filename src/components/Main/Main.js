@@ -1,7 +1,7 @@
 import './Main.css';
 import SearchForm from '../SearchForm/SearchForm';
 import Button from '../Button/Button';
-
+import About from '../About/About';
 
 function Main() {
   return (
@@ -21,6 +21,7 @@ function Main() {
           </SearchForm>
         </div>
       </section>
+      <About />
     </div>
   );
 }

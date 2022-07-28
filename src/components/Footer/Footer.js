@@ -1,6 +1,6 @@
 import './Footer.css';
 import Facebook from '../../images/facebook.svg';
-import Github from '../../images/github.svg'
+import Github from '../../images/github.svg';
 import { Link } from 'react-router-dom';
 
 function Footer() {
