@@ -3,6 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Button from '../Button/Button';
 import About from '../About/About';
 import Preloader from '../Preloader/Preloader';
+
 function Main() {
   return (
     <div className='main'>
@@ -21,8 +22,10 @@ function Main() {
           </SearchForm>
         </div>
       </section>
-      <About />
       <Preloader text='Searching for news...'/>
+
+      <About />
+
     </div>
   );
 }

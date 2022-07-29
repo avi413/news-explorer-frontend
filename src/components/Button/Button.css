@@ -24,7 +24,14 @@
     width: 288px;
     background: rgba(255, 255, 255, 1);
     color: rgba(26, 27, 34, 1);
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
 
+.button_type_more:hover {
+    background: #E8E8E8;
 }
 
 .button_type_login {

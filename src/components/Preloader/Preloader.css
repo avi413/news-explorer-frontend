@@ -8,6 +8,7 @@
     gap: 24px;
     width: 100%;
     min-height: 282px;
+    padding: 80px 0;
   }
   
   .preloader__circle {

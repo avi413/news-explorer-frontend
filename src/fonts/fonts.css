@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('./Roboto-Regular.ttf') format('truetype');
+    src: url('./roboto-400-regular.woff2') format('woff2'), url('./roboto-400-regular.woff') format('woff');
   }
   
   @font-face {
@@ -11,7 +11,15 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url('./Roboto-Medium.ttf') format('truetype');
+    src: url('./roboto-500.woff2') format('woff2'), url('./roboto-500.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('./roboto-700.woff2') format('woff2'), url('./roboto-700.woff') format('woff');
   }
 
   @font-face {
@@ -19,7 +27,7 @@
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url('./Roboto-Black.ttf') format('truetype');
+    src: url('./roboto-900.woff2') format('woff2'), url('./roboto-900.woff') format('woff');
   }
 
   @font-face {
@@ -27,21 +35,29 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('./RobotoSlab-Regular.ttf') format('truetype');
+    src: url('./roboto-slab-400-regular.woff2') format('woff2'), url('./roboto-slab-400-regular.woff') format('woff');
   }
   
   @font-face {
     font-family: 'RobotoSlab';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     font-display: swap;
-    src: url('./RobotoSlab-Medium.ttf') format('truetype');
+    src: url('./roboto-slab-700.woff2') format('woff2'), url('./roboto-slab-700.woff') format('woff');
   }
 
   @font-face {
-    font-family: 'RobotoSlab';
+    font-family: 'Inter';
     font-style: normal;
-    font-weight: 900;
+    font-weight: 400;
     font-display: swap;
-    src: url('./RobotoSlab-Black.ttf') format('truetype');
+    src: url('./inter-400-regular.woff2') format('woff2'), url('./inter-400-regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('./inter-500.woff2') format('woff2'), url('./inter-500.woff') format('woff');
   }
