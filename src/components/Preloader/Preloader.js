@@ -1,16 +1,6 @@
 import './Preloader.css';
-import NewsCardList from '../NewsCardList/NewsCardList';
-import NotFound from '../NotFound/NotFound';
-
-function Preloader({ text }){
-  return (
-    <section className="preloader">
-      <div className="preloader__circle"></div>
-      <span className="preloader__text">{text}</span>
-      <NewsCardList />
-      <NotFound />
-    </section>
-  );
-};
+function Preloader({ children }) {
+  return <section className='preloader'>{children}</section>;
+}
 
 export default Preloader;

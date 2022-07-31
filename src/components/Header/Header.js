@@ -18,6 +18,10 @@ function Header(props) {
     }
   }
   const changeNavbarColor = () => {
+    if(window.location.pathname === '/saved-news') {
+      window.removeEventListener('scroll', changeNavbarColor);
+      return
+    }
     if (window.scrollY >= getMaxScrollY(width)) {
       setColorchange(true);
     } else {
@@ -26,8 +30,9 @@ function Header(props) {
   };
   
   useEffect(() => {
-    if(location.pathname === '/saved-news') {
+    if(window.location.pathname === '/saved-news') {
         setColorchange(true);
+       
     } else {
         setColorchange(false);
     }

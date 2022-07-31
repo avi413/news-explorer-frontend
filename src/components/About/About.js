@@ -8,10 +8,10 @@ function About() {
       <div className='about__text'>
         <h2 className='about__title'>About the author</h2>
         <p className='about__desc'>
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know. You
-          can also talk about your experience with Practicum, what you learned
-          there, and how you can help potential customers.
+          Hello, My name is Avi Dalal and I am a FullStack web Developer, I used
+          to develop solutions for websites using various technologies such as
+          JavaScript, CSS, and HTML, ReactJS framework for UI. NodeJs and
+          EXPRESS for the BackEnd
         </p>
       </div>
     </section>

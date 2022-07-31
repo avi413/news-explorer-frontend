@@ -7,6 +7,11 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SavedNews from '../SavedNews/SavedNews';
 
+window.scroll({
+  top: 0, 
+  left: 0, 
+  behavior: 'smooth'
+});
 function App() {
   return (
     <div className='App'>

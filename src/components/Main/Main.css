@@ -16,7 +16,9 @@
    margin: 160px auto 80px;
    max-width: 608px;
 }
-
+.main__list {
+    margin: auto 104px;
+}
 .main__title {
     margin: auto;
     font-family: RobotoSlab, sans-serif;;

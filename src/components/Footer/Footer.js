@@ -3,6 +3,14 @@ import Facebook from '../../images/facebook.svg';
 import Github from '../../images/github.svg';
 import { Link } from 'react-router-dom';
 
+
+const handleClick = () => {
+  window.scroll({
+    top: 0, 
+    left: 0, 
+    behavior: 'smooth'
+  });
+}
 function Footer() {
   return (
     <footer className='footer'>
@@ -10,7 +18,7 @@ function Footer() {
         © 2022 News Explorer, Powered by News API
       </span>
       <nav className='footer__nav'>
-        <Link className='footer__link' to='/'>
+        <Link onClick={event => handleClick(event)} className='footer__link' to='/'>
           Home
         </Link>
         <ul className='footer__social'>

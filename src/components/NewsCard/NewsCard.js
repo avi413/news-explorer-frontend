@@ -3,8 +3,8 @@ import Demo from '../../images/demo.png';
 
 function NewsCard() {
   return (
-    <li>
-      <article className='card'>
+    <li className='card'>
+      <article className='card__item'>
         <a href='' target='_blank' rel='noreferrer'>
           <img className='card__image' src={Demo} alt=''></img>
         </a>

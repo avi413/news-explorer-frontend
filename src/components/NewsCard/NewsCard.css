@@ -2,13 +2,15 @@
     color: #000;
     background-color: #FFF;
     height: 576px;
-    width: 400px;
-    border-radius: 15px 15px  0  0;
+    width: 100%;
+    border-radius: 15px;
+    margin: auto;
+    list-style: none;
 }
 
 .card__image {
     height: 272px;
-    width: 400px;
+    width: 100%;
     border-radius: 15px 15px  0 0;
 }
 
@@ -20,11 +22,11 @@
     color: #B6BCBF;
 
 }
-.card__info{
+.card__info {
     margin: 20px 24px 24px;
 }
 
-.card__title{
+.card__title {
     font-family: RobotoSlab, sans-serif;
     font-size: 26px;
     font-weight: 400;
@@ -40,6 +42,10 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .card__link {
@@ -52,4 +58,46 @@
     letter-spacing: 0.4000000059604645px;
     text-align: left;
     color: #B6BCBF;  
+}
+
+@media screen and (max-width: 1020px) {
+    .card {
+        height: 420px;
+        width: 224px;
+    }
+    .card__image {
+        height: 150px;
+        width: 224px;   
+    }
+
+    .card__date {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .card__info {
+        margin: 16px;
+    }
+    
+    .card__title {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .card__quote {
+        font-size: 16px;
+        font-weight: 400;     
+    }
+    
+    .card__link {
+        font-size: 16px;
+        line-height: 20px;  
+    }
+}
+@media screen and (max-width: 400px) {
+    .card__quote {
+
+    }
 }
