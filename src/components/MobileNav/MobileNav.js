@@ -2,7 +2,7 @@ import './MobileNav.css';
 import Menu from '../../images/menu.svg';
 import Button from '../Button/Button';
 function MobileNav(props) {
-  const { colorChange } = props;
+  const { colorChange, onClick } = props;
   return (
     <nav className='mobile-nav'>
       <div className='mobile-nav__links'>
@@ -11,7 +11,7 @@ function MobileNav(props) {
             <button
                 aria-label="close mobile nav"
                 className="mobile-nav__close"
-                onClick=''
+                onClick={onClick}
                 />
         </div>
 
@@ -35,7 +35,7 @@ function MobileNav(props) {
         />
       )}
       </div>
-      <a href='#' className='icon' onClick='myFunction()'>
+      <a href='#' className='icon' onClick={onClick}>
         <img src={Menu} />
       </a>
     </nav>
