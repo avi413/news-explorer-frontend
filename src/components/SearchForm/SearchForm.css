@@ -29,6 +29,15 @@
     right: 0;
 }
 
+.search-form_button:hover {
+    background: #347EFF;
+}
+
+.search-form_button:focus {
+    background: #2A65CC;
+
+}
+
 @media screen and (max-width: 768px) {
     .search-form__input {
         height: 56px;

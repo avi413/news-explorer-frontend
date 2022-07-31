@@ -6,7 +6,7 @@ function Navigation(props) {
   const { colorChange } = props;
   return (
     <nav className='navigation'>
-      <Link className='navigation__link' to='/'>
+      <Link className='navigation__link navigation__link_active' to='/'>
         Home
       </Link>
       <Link className='navigation__link' to='/saved-news'>
@@ -17,7 +17,9 @@ function Navigation(props) {
       ) : (
         <Button
           title='profile'
-          className={`button_type_logout ${colorChange ? 'button_theme_dark' : ''}`}
+          className={`navigation_logout ${
+            colorChange ? 'button_theme_dark' : ''
+          }`}
         />
       )}
     </nav>

@@ -89,11 +89,11 @@
 @media screen and (max-width: 1020px) {
     .card {
         height: 420px;
-        width: 224px;
+
     }
     .card__image {
         height: 150px;
-        width: 224px;   
+ 
     }
 
     .card__date {

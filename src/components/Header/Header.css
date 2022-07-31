@@ -5,6 +5,8 @@
     color: #fff;
     top: 0;
     z-index: 2;
+    margin: 0;
+    
 }
 
 .header_dark {
@@ -21,7 +23,7 @@
 }
 
 .header__logo {
-    font-family: RobotoSlab, sans-serif;;
+    font-family: RobotoSlab, sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;

@@ -1,0 +1,71 @@
+.mobile-nav {
+    overflow: hidden;
+    background-color: #1A1B22;
+    position: relative;
+    margin: auto;
+    border-radius: 0 0 10px 10px;
+}
+
+.mobile-nav__header{
+    margin: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mobile-nav__close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.mobile-nav__close::after {
+    content: url('../../images/menu-w.svg');
+}
+
+.mobile-nav__logo {
+    font-family: RobotoSlab;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+    margin: 0;
+    border-bottom: 1px solid #C4C4C403;
+}
+
+.mobile-nav__links {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav__link {
+    color: white;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 56px;
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+}
+
+.mobile-nav__link:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.mobile-nav__link_active {
+    background-color: #191919;
+    color: white;
+}
+
+.mobile-nav_logout {
+    color: #fff;
+    border: 1px solid #fff;
+    margin: 22px ;
+    height: 56px;
+    width: 288px;
+    border-radius: 100px;
+    align-self: center;
+
+}

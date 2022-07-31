@@ -2,11 +2,12 @@ import './Header.css';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
+import MobileNav from '../MobileNav/MobileNav';
 
 function Header(props) {
   const [colorChange, setColorchange] = useState(false);
   const location = useLocation()
-  const width = window.innerWidth;
+  const [width, setWidth] = useState(window.innerWidth);
 
   const getMaxScrollY = (width) => {
     if(width > 768) {
@@ -29,6 +30,16 @@ function Header(props) {
     }
   };
   
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize, false);
+    window.addEventListener('scroll', changeNavbarColor, false);
+  }, []);
+
+
   useEffect(() => {
     if(window.location.pathname === '/saved-news') {
         setColorchange(true);
@@ -42,12 +53,17 @@ function Header(props) {
   window.addEventListener('scroll', changeNavbarColor);
 
   return (
-    <header className={`header ${colorChange ? 'header_dark' : ''}`}>
+    <>
+
+{width > 700 ?  <header className={`header ${colorChange ? 'header_dark' : ''}`}>
       <div className='header__container'>
         <h1 className='header__logo'>NewsExplorer</h1>
         <Navigation colorChange={colorChange} />
       </div>
     </header>
+    : <MobileNav colorChange={colorChange} /> }
+    </>
+    
   );
 }
 export default Header;

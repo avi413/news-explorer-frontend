@@ -32,21 +32,7 @@
     background: #E8E8E8;
 }
 
-.button_type_clear {
-    height: 48px;
-    width: 176px;
-    border: 1px solid #fff;
-
-}
-
-.button_type_logout {
-    height: 48px;
-    padding: 0 19px;
-}
-
 .button_type_disable {
-    height: 64px;
-    width: 360px;
     background: rgba(230, 232, 235, 1);
     color: rgba(182, 188, 191, 1);
 }
