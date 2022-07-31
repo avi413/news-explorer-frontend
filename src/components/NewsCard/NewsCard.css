@@ -1,3 +1,8 @@
+.card__item {
+    position: relative;
+    width: 100%;
+}
+
 .card {
     color: #000;
     background-color: #FFF;
@@ -59,6 +64,27 @@
     text-align: left;
     color: #B6BCBF;  
 }
+
+.card__bookmark {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.card__bookmark::before {
+  content: url('../../images/bookmark.svg');
+}
+
+.card__bookmark:hover  {
+    stroke: #DA4567;
+  }
+
 
 @media screen and (max-width: 1020px) {
     .card {

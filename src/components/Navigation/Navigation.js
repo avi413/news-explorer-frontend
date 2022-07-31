@@ -13,11 +13,11 @@ function Navigation(props) {
         Saved articles
       </Link>
       {1 === 0 ? (
-        <Button title='Sign in' type='button_type_login' />
+        <Button title='Sign in' className='button_type_clear' />
       ) : (
         <Button
           title='profile'
-          type={`button_type_logout ${colorChange ? 'button_theme_dark' : ''}`}
+          className={`button_type_logout ${colorChange ? 'button_theme_dark' : ''}`}
         />
       )}
     </nav>

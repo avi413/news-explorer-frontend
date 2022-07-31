@@ -1,5 +1,6 @@
 import './NotFound.css';
 import NotFoundImg from '../../images/not-found.svg';
+
 function NotFound() {
   return (
     <div className='not-found'>

@@ -11,30 +11,3 @@
     padding: 80px 0;
   }
   
-  .preloader__circle {
-    display: block;
-    border: double 1px transparent;
-    background-image: linear-gradient(#f5f6f7, #f5f6f7), 
-                      conic-gradient(from 180deg at 50% 50%, #1A1B22 0deg, rgba(209, 210, 214, 0) 360deg);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    border-radius: 50%;
-    width: 74px;
-    height: 74px;
-    animation: spin 1s infinite linear;
-  }
-  
-  .preloader__text {
-    text-align: center;
-    font-family: Roboto, sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #B6BCBF;
-  }
-  
-  @keyframes spin {
-    100% {
-      transform: rotate(360deg);
-    }
-  }

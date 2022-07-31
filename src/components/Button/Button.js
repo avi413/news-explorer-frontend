@@ -1,9 +1,9 @@
 import './Button.css';
 
 function Button(props) {
-  const { title, type, onclick } = props;
+  const { title, className, onclick } = props;
   return (
-    <button className={`button ${type}`} onClick={onclick}>
+    <button className={`button ${className}`} onClick={onclick}>
       {title}
     </button>
   );

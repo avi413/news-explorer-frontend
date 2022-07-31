@@ -1,12 +1,19 @@
 import './NewsCard.css';
 import Demo from '../../images/demo.png';
+import Bookmark from '../../images/bookmark.svg'
 
 function NewsCard() {
   return (
     <li className='card'>
+
       <article className='card__item'>
+      <button
+          src={Bookmark}
+          className="card__bookmark"
+          alt='Bookmark'
+        />
         <a href='' target='_blank' rel='noreferrer'>
-          <img className='card__image' src={Demo} alt=''></img>
+          <img className='card__image' src={Demo} alt='card__image' />
         </a>
         <div className='card__info'>
           <span className='card__date'>November 4, 2020</span>

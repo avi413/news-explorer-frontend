@@ -18,7 +18,7 @@ function Main() {
             <input className='search-form__input' placeholder='Enter topic' />
             <Button
               title='Search'
-              type='button_type_search search-form_button'
+              className='button_type_blue search-form_button'
             />
           </SearchForm>
         </div>

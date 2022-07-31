@@ -6,15 +6,17 @@ import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SavedNews from '../SavedNews/SavedNews';
+import SignInPopup from '../SignInPopup/SignInPopup';
 
-window.scroll({
-  top: 0, 
-  left: 0, 
-  behavior: 'smooth'
-});
 function App() {
   return (
     <div className='App'>
+      <SignInPopup
+        name='name'
+        title='title'
+        formName='formName'
+        lable='lable'
+      />
       <Header />
 
       <Routes>

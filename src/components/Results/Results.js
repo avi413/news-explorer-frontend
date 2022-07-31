@@ -6,7 +6,7 @@ function Results() {
     <div className='results'>
       <h3 className='results__title'>Search results</h3>
       <NewsCardList/>
-      <Button type='button_type_more results__button' title='Show more' />
+      <Button className='button_type_white results__button' title='Show more' />
     </div>
   );
 }

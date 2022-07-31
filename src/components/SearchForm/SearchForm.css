@@ -10,7 +10,7 @@
     border-radius: 100px;
     border: none;
     box-sizing: border-box;
-    padding-left:24px;
+    padding-left: 24px;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
@@ -22,6 +22,8 @@
 }
 
 .search-form_button {
+    height: 64px;
+    width: 168px;
     padding: 15px;
     position: absolute;
     right: 0;
@@ -31,12 +33,21 @@
     .search-form__input {
         height: 56px;
     }
+
+    .search-form_button {
+        height: 56px;
+        width: 160px;
+    }
 }
-@media screen and (max-width: 535px) { 
-    .search-form { 
+
+@media screen and (max-width: 535px) {
+    .search-form {
         max-width: 100%;
     }
+
     .search-form_button {
         position: inherit;
+        margin-top: 32px;
+        width: 100%;
     }
 }
