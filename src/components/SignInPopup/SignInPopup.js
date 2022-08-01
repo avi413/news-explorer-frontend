@@ -15,7 +15,7 @@ function SignInPopup(props) {
       lable="Sign in"
       isOpen={props.isOpen}
       close={props.onClose}
-      formName="Sign InForm"
+      formName="SignInForm"
       onSubmit={handleSubmit}
       footer="Sign up"
     >
