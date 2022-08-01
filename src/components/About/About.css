@@ -29,19 +29,26 @@
     max-width: 600px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
+    .about{
+        margin: 24px;
+    }
+
     .about__img {
         height: 232px;
         width: 232px;
+        flex-grow: 1;
+    }
+    .about__text{
+        flex-grow: 2;
     }
 
 }
 
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
     .about{
         flex-direction: column;
-        margin: 24px;
         align-items: center;
     }
 

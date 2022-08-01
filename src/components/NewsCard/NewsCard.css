@@ -64,7 +64,7 @@
     color: #B6BCBF;  
 }
 
-.card__bookmark {
+.card__icon {
     position: absolute;
     top: 24px;
     right: 24px;
@@ -84,7 +84,15 @@
     stroke: #DA4567;
   }
 
+  .card__trash::before {
+    content: url('../../images/trash.svg');
+  }
+  
+  .card__trash:hover  {
+      stroke: #DA4567;
+    }
 
+    
 @media screen and (max-width: 1020px) {
     .card__image {
         height: 150px;

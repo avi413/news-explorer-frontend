@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 32px  104px 26px;
+    margin: 32px  104px 28px;
 }
 
 .footer__nav {
@@ -35,7 +35,7 @@
     color: #B6BCBF;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .footer {
         margin: auto 40px;
         margin: 24px  40px 18px;

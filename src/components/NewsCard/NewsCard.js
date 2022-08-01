@@ -1,16 +1,27 @@
 import './NewsCard.css';
 import Demo from '../../images/demo.png';
-import Bookmark from '../../images/bookmark.svg'
+import Bookmark from '../../images/bookmark.svg';
+import Trash from '../../images/trash.svg';
+import { useEffect, useState } from 'react';
 
 function NewsCard() {
+  const [icon, setIcon] = useState({ name: '', className: '' });
+
+  useEffect(() => {
+    if (window.location.pathname === '/saved-news') {
+      setIcon({ name: 'Trash', className: 'card__trash' });
+    } else {
+      setIcon({ name: 'Bookmark', className: 'card__bookmark' });
+    }
+  }, []);
+
   return (
     <li className='card'>
-
       <article className='card__item'>
-      <button
-          src={Bookmark}
-          className="card__bookmark"
-          alt='Bookmark'
+        <button
+          src={icon.name}
+          className={`card__icon ${icon.className}`}
+          alt={icon.name}
         />
         <a href='' target='_blank' rel='noreferrer'>
           <img className='card__image' src={Demo} alt='card__image' />
