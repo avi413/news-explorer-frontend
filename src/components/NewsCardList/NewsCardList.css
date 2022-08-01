@@ -8,9 +8,16 @@
 
 @media screen and (max-width: 760px) {
     .card-list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .card-list {
         grid-template-columns: 1fr 1fr;
     }
 }
+
 
 @media screen and (max-width: 510px) {
     .card-list {

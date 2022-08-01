@@ -13,15 +13,18 @@
 }
 
 .main__search {
-   margin: 160px auto 80px;
-   max-width: 608px;
+    margin: 160px auto 80px;
+    max-width: 608px;
 }
+
 .main__list {
     margin: auto 104px;
 }
+
 .main__title {
     margin: auto;
-    font-family: RobotoSlab, sans-serif;;
+    font-family: RobotoSlab, sans-serif;
+    ;
     font-size: 60px;
     font-weight: 400;
     line-height: 64px;
@@ -29,7 +32,8 @@
 
 .main__subtitle {
     margin: 32px auto 88px;
-    font-family: Roboto, sans-serif;;
+    font-family: Roboto, sans-serif;
+    ;
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
@@ -44,14 +48,20 @@
         margin: 104px auto 32px;
         max-width: 448px;
     }
+
     .main__title {
         font-size: 36px;
         line-height: 40px;
     }
+
     .main__subtitle {
         margin: 16px auto 48px;
         font-size: 18px;
-        line-height: 24px;  
+        line-height: 24px;
+    }
+
+    .main__list {
+        margin: auto 40px;
     }
 
 }
@@ -60,9 +70,13 @@
     .main__hero {
         background-image: url(../../images/hero-mobile.png);
     }
-    
+
     .main__search {
         margin: 104px 16px 32px;
         max-width: 285px;
+    }
+
+    .main__list {
+        margin: auto 16px;
     }
 }
