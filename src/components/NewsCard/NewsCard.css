@@ -76,6 +76,28 @@
     cursor: pointer;
 }
 
+.card__tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    height: 40px;
+    width: fit-content;
+    border-radius: 8px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    display: none;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 8px 20px;
+}
+
+.card__tag_active {
+    display: block;
+}
+
 .card__bookmark::before {
   content: url('../../images/bookmark.svg');
 }

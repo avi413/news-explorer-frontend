@@ -33,7 +33,7 @@
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .saved-news__data, .saved-news__list {
         margin: auto 40px;
     }

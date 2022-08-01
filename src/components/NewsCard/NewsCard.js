@@ -2,25 +2,26 @@ import './NewsCard.css';
 import Demo from '../../images/demo.png';
 import { useEffect, useState } from 'react';
 
-function NewsCard() {
+function NewsCard(props) {
   const [icon, setIcon] = useState({ name: '', className: '' });
+  const [activeTag ,setactiveTag] = useState('');
 
   useEffect(() => {
     if (window.location.pathname === '/saved-news') {
       setIcon({ name: 'Trash', className: 'card__trash' });
+      setactiveTag('card__tag_active');
+
     } else {
       setIcon({ name: 'Bookmark', className: 'card__bookmark' });
+      setactiveTag('');
     }
   }, []);
 
   return (
     <li className='card'>
       <article className='card__item'>
-        <button
-          src={icon.name}
-          className={`card__icon ${icon.className}`}
-          alt={icon.name}
-        />
+        <button src={icon.name} className={`card__icon ${icon.className}`} />
+        <button className={`card__tag ${activeTag}`}>Nature</button>
         <a href='/' target='_blank' rel='noreferrer'>
           <img className='card__image' src={Demo} alt='card__image' />
         </a>
