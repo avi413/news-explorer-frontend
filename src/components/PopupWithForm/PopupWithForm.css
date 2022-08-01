@@ -158,10 +158,6 @@
     .popup__close {
         margin-left: 250px;
     }
-
-    .popup__close::before {
-        content: url("");
-    }
 }
 
 @media screen and (max-width: 640px) {

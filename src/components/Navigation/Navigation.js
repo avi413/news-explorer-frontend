@@ -6,14 +6,14 @@ import { useEffect, useState } from 'react';
 function Navigation(props) {
   const { colorChange, onSignOutClick, ononSignInClick } = props;
   const [active, stActive] = useState({ home: '', savedNews: '' });
-
+  const location = window.location.pathname;
   useEffect(() => {
-    if (window.location.pathname === '/saved-news') {
+    if (location === '/saved-news') {
       stActive({ home: 'navigation__link_active', savedNews: '' });
     } else {
       stActive({ home: '', savedNews: 'navigation__link_active' });
     }
-  }, [window.location.pathname]);
+  }, [location]);
 
   return (
     <nav className='navigation'>
@@ -23,7 +23,7 @@ function Navigation(props) {
       <Link className={`navigation__link ${active.home}`} to='/saved-news'>
         Saved articles
       </Link>
-      {1 === 1 ? (
+      {!(1 === 0) ? (
         <Button
           title='Sign in'
           className={`button_type_clear navigation_signin ${

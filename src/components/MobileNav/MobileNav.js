@@ -1,10 +1,9 @@
 import './MobileNav.css';
-import Menu from '../../images/menu.svg';
 import Button from '../Button/Button';
 import { useState } from 'react';
 
 function MobileNav(props) {
-  const { colorChange, onClick } = props;
+  const { colorChange } = props;
   const [isOpen, SetIstOpen] = useState(false);
 
   const handleClose = (event) => {

@@ -1,7 +1,5 @@
 import './NewsCard.css';
 import Demo from '../../images/demo.png';
-import Bookmark from '../../images/bookmark.svg';
-import Trash from '../../images/trash.svg';
 import { useEffect, useState } from 'react';
 
 function NewsCard() {
