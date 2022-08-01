@@ -5,7 +5,9 @@
     background-color: #fff;
     color: #1A1B22;;
     border-bottom: 1px solid #C4C4C4;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 .mobile-nav__header_type_dark{
     background-color: #1A1B22;
@@ -24,10 +26,32 @@
 .mobile-nav {
     overflow: hidden;
     background-color: #1A1B22;
+    color: #fff;
     position: relative;
     margin: auto;
     border-radius: 0 0 10px 10px;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: visibility 0.5s, opacity 0.5s linear;
+    position: fixed;
 }
+
+.mobile-nav_type_dark{
+    background-color: #fff;
+    color: #1A1B22;
+}
+
+.mobile-nav_active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: fill;
+    transition: visibility 0.5s, opacity 0.5s linear;
+    position: fixed;
+}
+
 
 .mobile-nav__icon {
     background: transparent;
@@ -47,6 +71,9 @@
 .mobile-nav_close::after {
     content: url('../../images/close.svg');
 }
+.mobile-nav_close_type_dark::after {
+    content: url('../../images/close-b.svg');
+}
 
 .mobile-nav__links {
     display: flex;
@@ -54,7 +81,6 @@
 }
 
 .mobile-nav__link {
-    color: white;
     font-family: Roboto;
     font-size: 18px;
     font-weight: 500;
@@ -62,6 +88,11 @@
     display: block;
     text-decoration: none;
     padding: 16px;
+    color: #000;
+}
+
+.mobile-nav__link_type_dark {
+    color: #fff;
 }
 
 .mobile-nav__link:hover {
@@ -75,8 +106,6 @@
 }
 
 .mobile-nav_logout {
-    color: #fff;
-    border: 1px solid #fff;
     margin: 22px ;
     height: 56px;
     width: 288px;

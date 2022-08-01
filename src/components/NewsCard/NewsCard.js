@@ -23,7 +23,7 @@ function NewsCard() {
           className={`card__icon ${icon.className}`}
           alt={icon.name}
         />
-        <a href='' target='_blank' rel='noreferrer'>
+        <a href='/' target='_blank' rel='noreferrer'>
           <img className='card__image' src={Demo} alt='card__image' />
         </a>
         <div className='card__info'>
@@ -37,7 +37,7 @@ function NewsCard() {
             me. This advice, which Louv attributes to nature educator Jon Young,
             is for both adults and children to find...
           </blockquote>
-          <a className='card__link' href='' target='_blank' rel='noreferrer'>
+          <a className='card__link' href='/' target='_blank' rel='noreferrer'>
             treehugger
           </a>
         </div>

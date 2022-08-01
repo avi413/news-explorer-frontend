@@ -4,7 +4,7 @@ import Avi from '../../images/Avi.png';
 function About() {
   return (
     <section className='about'>
-      <img src={Avi} className='about__img' />
+      <img src={Avi} className='about__img' alt='about'/>
       <div className='about__text'>
         <h2 className='about__title'>About the author</h2>
         <p className='about__desc'>

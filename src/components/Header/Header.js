@@ -37,7 +37,7 @@ function Header(props) {
   useEffect(() => {
     window.addEventListener("resize", handleResize, false);
     window.addEventListener('scroll', changeNavbarColor, false);
-  }, []);
+  });
 
 
   useEffect(() => {

@@ -25,7 +25,7 @@ function Footer() {
         <li className='footer__item'>
           <a
             className='footer__link'
-            href=''
+            href='https://github.com/avi413/'
             target='_blank'
             rel='noreferrer'
           >
@@ -35,7 +35,7 @@ function Footer() {
         <li className='footer__item'>
           <a
             className='footer__link'
-            href=''
+            href='https://www.facebook.com/avi.dalal/'
             target='_blank'
             rel='noreferrer'
           >
