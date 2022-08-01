@@ -2,7 +2,8 @@
     display: flex;
     align-items: center;
     gap: 42px;
-    font-family: Roboto, sans-serif;;
+    font-family: Roboto, sans-serif;
+    ;
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
@@ -21,18 +22,24 @@
 .navigation_logout {
     height: 48px;
     padding: 0 19px;
-  }
+}
 
-@media screen and (max-width: 800px) { 
+.navigation_signin {
+    height: 48px;
+    width: 176px;  
+}
+
+@media screen and (max-width: 800px) {
     .navigation {
         font-size: 16px;
     }
+
     .navigation__link {
         padding: 22px 0;
     }
 }
 
-@media screen and (max-width: 535px) { 
+@media screen and (max-width: 535px) {
     .navigation {
         display: none;
     }

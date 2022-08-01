@@ -28,7 +28,7 @@ function PopupWithForm(props) {
             />
           </fieldset>
         </form>
-        <p className='popup__footer'>or <button className='popup__switch-button'>{props.footer}</button></p>
+        <p className='popup__footer'>or <button className='popup__switch-button' onClick={props.handleSwitchPopupClick}>{props.footer}</button></p>
       </div>
     </div>
   );

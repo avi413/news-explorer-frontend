@@ -17,12 +17,13 @@ function SignInPopup(props) {
       close={props.onClose}
       formName="SignInForm"
       onSubmit={handleSubmit}
-      footer="Sign up"
+      footer={props.footer}
+      handleSwitchPopupClick={props.handleSwitchPopupClick}
     >
        <label className="popup__label" htmlFor="Email">Email</label>
       <input
         ref={inputEl}
-        id="Email"
+        id="signinemail"
         className="popup__input popup__input-text popup__input-text_type_email"
         required
         type="email"
@@ -33,7 +34,7 @@ function SignInPopup(props) {
       <label className="popup__label" htmlFor="Password">password</label>
      <input
         ref={inputEl}
-        id="Password"
+        id="signinpassword"
         className="popup__input popup__input-text popup__input-text_type_password"
         required
         type="password"

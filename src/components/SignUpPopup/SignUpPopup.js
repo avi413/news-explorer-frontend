@@ -1,4 +1,4 @@
-import './SignUpPopup.css'
+import './SignUpPopup.css';
 import React, { useRef } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
@@ -17,12 +17,13 @@ function SignUpPopup(props) {
       close={props.onClose}
       formName="SignUpForm"
       onSubmit={handleSubmit}
-      footer="Sign up"
+      footer={props.footer}
+      handleSwitchPopupClick={props.handleSwitchPopupClick}
     >
        <label className="popup__label" htmlFor="Email">Email</label>
       <input
         ref={inputEl}
-        id="Email"
+        id="signupemail"
         className="popup__input popup__input-text popup__input-text_type_email"
         required
         type="email"
@@ -33,7 +34,7 @@ function SignUpPopup(props) {
       <label className="popup__label" htmlFor="Password">password</label>
      <input
         ref={inputEl}
-        id="Password"
+        id="signuppassword"
         className="popup__input popup__input-text popup__input-text_type_password"
         required
         type="password"
@@ -44,7 +45,7 @@ function SignUpPopup(props) {
       <label className="popup__label" htmlFor="Username">Username</label>
       <input
         ref={inputEl}
-        id="Username"
+        id="username"
         className="popup__input popup__input-text popup__input-text_type_username"
         required
         type="text"
