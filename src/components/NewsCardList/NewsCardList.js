@@ -3,9 +3,9 @@ import NewsCard from '../NewsCard/NewsCard';
 function NewsCardList(props) {
   return (
     <ul className='card-list'>
-      <NewsCard />
-      <NewsCard />
-      <NewsCard />
+      <NewsCard tagTitle='Nature'/>
+      <NewsCard tagTitle='Nature'/>
+      <NewsCard tagTitle='Nature'/>
     </ul>
   );
 }

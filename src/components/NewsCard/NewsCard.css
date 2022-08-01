@@ -15,7 +15,7 @@
 .card__image {
     height: 100%;
     width: 100%;
-    border-radius: 15px 15px  0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .card__date {
@@ -26,6 +26,7 @@
     color: #B6BCBF;
 
 }
+
 .card__info {
     margin: 20px 24px 24px;
 }
@@ -34,14 +35,14 @@
     font-family: RobotoSlab, sans-serif;
     font-size: 26px;
     font-weight: 400;
-    line-height: 30px;  
+    line-height: 30px;
     margin: 12px 0 16px;
     color: #1A1B22;
 
 }
 
 .card__quote {
-    margin: 0  0 8px;
+    margin: 0 0 8px;
     font-family: Roboto;
     font-size: 16px;
     font-weight: 400;
@@ -61,7 +62,7 @@
     line-height: 20px;
     letter-spacing: 0.4000000059604645px;
     text-align: left;
-    color: #B6BCBF;  
+    color: #B6BCBF;
 }
 
 .card__icon {
@@ -74,6 +75,23 @@
     background-color: #fff;
     border: none;
     cursor: pointer;
+}
+
+.card__save {
+    position: absolute;
+    top: 24px;
+    right: 70px;
+    height: 40px;
+    width: fit-content;
+    border-radius: 8px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 8px 20px;
 }
 
 .card__tag {
@@ -99,22 +117,22 @@
 }
 
 .card__bookmark::before {
-  content: url('../../images/bookmark.svg');
+    content: url('../../images/bookmark.svg');
 }
 
-.card__bookmark:hover  {
-    stroke: #DA4567;
-  }
+.card__bookmark-bold::before {
+    content: url('../../images/bookmark-bold.svg');
+}
 
-  .card__trash::before {
+.card__trash::before {
     content: url('../../images/trash.svg');
-  }
-  
-  .card__trash:hover  {
-      stroke: #DA4567;
-    }
+}
 
-    
+.card__trash-bold::before {
+    content: url('../../images/trash-bold.svg');
+}
+
+
 @media screen and (max-width: 1020px) {
     .card__date {
         font-size: 18px;
@@ -124,21 +142,25 @@
     .card__info {
         margin: 16px;
     }
-    
+
     .card__title {
         font-size: 22px;
         font-weight: 400;
         line-height: 24px;
         margin-bottom: 10px;
     }
-    
+
     .card__quote {
         font-size: 16px;
-        font-weight: 400;     
+        font-weight: 400;
     }
-    
+
     .card__link {
         font-size: 16px;
-        line-height: 20px;  
+        line-height: 20px;
+    }
+
+    .card__save {
+        display: none;
     }
 }
