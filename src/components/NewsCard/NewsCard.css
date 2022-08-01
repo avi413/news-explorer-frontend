@@ -6,7 +6,6 @@
 .card {
     color: #000;
     background-color: #FFF;
-    height: 576px;
     width: 100%;
     border-radius: 15px;
     margin: auto;
@@ -87,10 +86,6 @@
 
 
 @media screen and (max-width: 1020px) {
-    .card {
-        height: 420px;
-
-    }
     .card__image {
         height: 150px;
  
@@ -120,10 +115,5 @@
     .card__link {
         font-size: 16px;
         line-height: 20px;  
-    }
-}
-@media screen and (max-width: 400px) {
-    .card__quote {
-
     }
 }
