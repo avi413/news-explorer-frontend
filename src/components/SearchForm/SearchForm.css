@@ -21,7 +21,7 @@
     outline: none;
 }
 
-.search-form_button {
+.search-form__button {
     height: 64px;
     width: 168px;
     padding: 15px;
@@ -29,11 +29,11 @@
     right: 0;
 }
 
-.search-form_button:hover {
+.search-form__button:hover {
     background: #347EFF;
 }
 
-.search-form_button:focus {
+.search-form__button:focus {
     background: #2A65CC;
 
 }
@@ -43,7 +43,7 @@
         height: 56px;
     }
 
-    .search-form_button {
+    .search-form__button {
         height: 56px;
         width: 160px;
     }
@@ -54,7 +54,7 @@
         max-width: 100%;
     }
 
-    .search-form_button {
+    .search-form__button {
         position: inherit;
         margin-top: 32px;
         width: 100%;

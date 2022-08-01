@@ -55,7 +55,7 @@ function Header(props) {
   return (
     <>
 
-{width > 700 ?  <header className={`header ${colorChange ? 'header_dark' : ''}`}>
+{width > 700 ?  <header className={`header ${colorChange ? 'header_type_dark' : ''}`}>
       <div className='header__container'>
         <h1 className='header__logo'>NewsExplorer</h1>
         <Navigation colorChange={colorChange} />

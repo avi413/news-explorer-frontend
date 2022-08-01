@@ -18,13 +18,13 @@ function Main() {
             <input className='search-form__input' placeholder='Enter topic' />
             <Button
               title='Search'
-              className='button_type_blue search-form_button'
+              className='button_type_blue search-form__button'
             />
           </SearchForm>
         </div>
       </section>
       <Preloader>
-        <div className='main__list'>
+        <div className='main-list'>
           <Results />
         </div>
       </Preloader>
