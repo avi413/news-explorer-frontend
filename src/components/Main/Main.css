@@ -59,11 +59,10 @@
         font-size: 18px;
         line-height: 24px;
     }
-
-    .main__list {
+    
+    .main-list {
         margin: auto 40px;
     }
-
 }
 
 @media screen and (max-width: 320px) {
