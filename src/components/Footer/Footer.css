@@ -28,7 +28,7 @@
 }
 
 .footer__copyright {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;

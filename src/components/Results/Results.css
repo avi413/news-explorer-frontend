@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 .results__title{
-    font-family: RobotoSlab;
+    font-family: RobotoSlab, sans-serif;
     font-size: 40px;
     font-weight: 400;
     line-height: 46px;
