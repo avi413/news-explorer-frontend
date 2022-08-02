@@ -22,7 +22,7 @@ function Main() {
     setIsPreloader(true);
     setIsSearching(true);
     setTimeout(() => {
-      if(inputEl.current.value =='') {
+      if(inputEl.current.value ==='') {
         setIsNotFound(true)
       } else {
         setIsResults(true);
