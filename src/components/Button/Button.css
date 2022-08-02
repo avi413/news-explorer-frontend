@@ -1,0 +1,46 @@
+.button {
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 1);
+    background-color: Transparent;
+    cursor: pointer;
+    color: inherit;
+    border: 1px solid #fff;
+}
+
+.button_theme_dark {
+    border: 1px solid #1A1B22
+}
+
+.button_type_blue {
+    background: rgba(47, 113, 229, 1);
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(47, 113, 229, 1);
+}
+
+.button_type_white {
+    height: 64px;
+    width: 288px;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(26, 27, 34, 1);
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.button_type_white:hover {
+    background: #E8E8E8;
+}
+
+.button_type_disable {
+    background: rgba(230, 232, 235, 1);
+    color: rgba(182, 188, 191, 1);
+}
+
+@media screen and (max-width: 320px) {
+    .button_type_white {
+        height: 56px;
+        width: 100%;
+        
+    }
+}
