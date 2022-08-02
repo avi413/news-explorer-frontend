@@ -4,7 +4,36 @@ import Button from '../Button/Button';
 import About from '../About/About';
 import Preloader from '../Preloader/Preloader';
 import Results from '../Results/Results';
+import Loading from '../Loading/Loading';
+import NotFound from '../NotFound/NotFound';
+
+import { useRef, useState } from 'react';
 function Main() {
+  const inputEl = useRef(null);
+  const [isPreloader, setIsPreloader] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [isResults, setIsResults] = useState(false);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    setIsResults(false);
+    setIsNotFound(false)
+    setIsPreloader(true);
+    setIsSearching(true);
+    setTimeout(() => {
+      if(inputEl.current.value =='') {
+        setIsNotFound(true)
+      } else {
+        setIsResults(true);
+      }
+      
+      setIsSearching(false);
+    }, 2000);
+  
+   
+  };
+
   return (
     <div className='main'>
       <section className='main__hero'>
@@ -15,19 +44,25 @@ function Main() {
             account.
           </p>
           <SearchForm>
-            <input className='search-form__input' placeholder='Enter topic' />
+            <input ref={inputEl} className='search-form__input' placeholder='Enter topic' />
             <Button
               title='Search'
               className='button_type_blue search-form__button'
+              onClick={handleClick}
             />
           </SearchForm>
         </div>
       </section>
-      <Preloader>
-        <div className='main-list'>
-          <Results />
-        </div>
-      </Preloader>
+      {isPreloader && (
+        <Preloader>
+          <div className='main-list'>
+          {isResults && <Results />}
+          {isNotFound && <NotFound />}
+          {isSearching && <Loading />}
+          </div>
+        </Preloader>
+      )}
+
       <About />
     </div>
   );

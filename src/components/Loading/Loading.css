@@ -9,6 +9,8 @@
     width: 74px;
     height: 74px;
     animation: spin 1s infinite linear;
+    margin: auto;
+    margin-bottom: 24px
   }
   
   .loading__text {
