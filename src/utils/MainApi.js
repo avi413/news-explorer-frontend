@@ -38,7 +38,7 @@ export const addArticle = (password, email) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        authorization :  localStorage.getItem("jwt");
+        authorization :  localStorage.getItem("jwt"),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ keyword, title, text, source, image, date, link }),
@@ -54,7 +54,7 @@ export const addArticle = (password, email) => {
       method: "GET",
       headers: {
         Accept: "application/json",
-        authorization :  localStorage.getItem("jwt");
+        authorization :  localStorage.getItem("jwt"),
         "Content-Type": "application/json",
       },
     })
