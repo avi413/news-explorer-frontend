@@ -7,25 +7,15 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function SignUpPopup(props) {
   const inputEl = useRef(null);
-  const { values, handleChange, errors, apiErr, setApiErr, isValid, resetForm } = useFormWithValidation({
-    username: '',
-    password: '',
-    email: '',
-  });
+  const { values, handleChange, errors, apiErr, isValid } = props.formValidation
   const {username,password,email} = values;
 
-  const handleSubmit = (event) => {
+  const handleSubmit= (event) => {
     event.preventDefault();
-    auth
-      .register(password, email, username)
-      .then((res) => {
-        props.handleRegister();
-        resetForm();
-      })
-      .catch((err) => {
-        setApiErr(err);
-      });
+    props.handleSignup({username,password,email});
+    console.log(apiErr);
   };
+
   return (
     <PopupWithForm
       title='Sign Up'
@@ -83,7 +73,7 @@ function SignUpPopup(props) {
         minLength='2'
         onChange={handleChange}
       />
-      <span className='popup__input-error'>{errors.email || errors.password || errors.username || apiErr}</span>
+      <span className='popup__input-error'>{apiErr || errors.email || errors.password || errors.username}</span>
     </PopupWithForm>
   );
 }

@@ -6,12 +6,13 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 function SignInPopup(props) {
   const inputEl = useRef(null);
-  const { values, handleChange, errors, apiErr, setApiErr, isValid, resetForm } = props.formValidation;
+  const { values, handleChange, errors, apiErr, isValid } = props.formValidation;
 
   const {password,email} = values;
   const handleSubmit = (event) => {
     event.preventDefault();
     props.handleSignin({password,email});
+
   }
   return (
     <PopupWithForm

@@ -22,9 +22,14 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loggedInData, setLoggedInData] = useState(null);
 
-  const formValidation = useFormWithValidation({
+  const signInValidation = useFormWithValidation({
+    password: '',
+    email: ''
+  });
+  const signUpValidation = useFormWithValidation({
     password: '',
     email: '',
+    username:''
   });
 
   const handleLogedInUser = (loggedInData) => {
@@ -53,11 +58,6 @@ function App() {
     }
   }, [loggedIn]);
 
-  const handleRegister = () => {
-    setIsSignUpPopupOpen(false);
-    setIsSuccessPopupOpen(true);
-  };
-
   const handleonSignInClick = () => {
     setIsSignInPopupOpen(true);
     setIsSuccessPopupOpen(false);
@@ -69,9 +69,6 @@ function App() {
     setIsSignInPopupOpen(false);
   };
 
-  const handleSignUp = () => {
-    setIsSignUpPopupOpen(false);
-  };
   const closeAllPopups = () => {
     setIsSignInPopupOpen(false);
     setIsSignUpPopupOpen(false);
@@ -83,11 +80,24 @@ function App() {
       .authorize(password, email)
       .then((res) => {
         setCurrentUser({ jwt: res, isLoggedIn: true });
-        formValidation.resetForm();
+        signInValidation.resetForm();
         setIsSignInPopupOpen(false);
       })
       .catch((err) => {
-        formValidation.setApiErr(err);
+        signInValidation.setApiErr(err);
+      });
+  };
+
+  const handleSignup = ({ password, email, username}) => {
+    auth
+      .register(password, email, username)
+      .then((res) => {
+        signUpValidation.resetForm();
+        setIsSignUpPopupOpen(false);
+        setIsSuccessPopupOpen(true);
+      })
+      .catch((err) => {
+        signUpValidation.setApiErr(err);
       });
   };
 
@@ -112,7 +122,7 @@ function App() {
           formName='signInForm'
           lable='sign in'
           footer='sign up'
-          formValidation={formValidation}
+          formValidation={signInValidation}
           handleSignin={handleSignin}
           handleSwitchPopupClick={handleSignUpClick}
         />
@@ -125,9 +135,9 @@ function App() {
           formName='signUpForm'
           lable='sign up'
           footer='sign in'
-          onSignUp={handleSignUp}
+          formValidation={signUpValidation}
+          handleSignup={handleSignup}
           handleSwitchPopupClick={handleonSignInClick}
-          handleRegister={handleRegister}
         />
 
         <PopupWithText
