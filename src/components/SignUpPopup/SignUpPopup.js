@@ -23,11 +23,9 @@ function SignUpPopup(props) {
         resetForm();
       })
       .catch((err) => {
-        console.log(err);
         setApiErr(err);
       });
   };
-  console.log(errors);
   return (
     <PopupWithForm
       title='Sign Up'
