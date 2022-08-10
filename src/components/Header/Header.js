@@ -4,7 +4,13 @@ import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import MobileNav from '../MobileNav/MobileNav';
 
-function Header({ onSignUpClick, ononSignInClick,isLoggedIn }) {
+function Header({
+  onSignUpClick,
+  ononSignInClick,
+  isLoggedIn,
+  hendleSignOut,
+  handleonSignInClick,
+}) {
   const [colorChange, setColorchange] = useState(false);
   const location = useLocation();
   const [width, setWidth] = useState(window.innerWidth);
@@ -59,6 +65,8 @@ function Header({ onSignUpClick, ononSignInClick,isLoggedIn }) {
               onSignUpClic={onSignUpClick}
               ononSignInClick={ononSignInClick}
               isLoggedIn={isLoggedIn}
+              hendleSignOut={hendleSignOut}
+              handleonSignInClick={handleonSignInClick}
             />
           </div>
         </header>
@@ -68,6 +76,8 @@ function Header({ onSignUpClick, ononSignInClick,isLoggedIn }) {
           isLoggedIn={isLoggedIn}
           onSignUpClic={onSignUpClick}
           ononSignInClick={ononSignInClick}
+          hendleSignOut={hendleSignOut}
+          handleonSignInClick={handleonSignInClick}
         />
       )}
     </>

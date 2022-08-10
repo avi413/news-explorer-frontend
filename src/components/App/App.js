@@ -32,11 +32,6 @@ function App() {
     username:''
   });
 
-  const handleLogedInUser = (loggedInData) => {
-    setLoggedIn(true);
-    setLoggedInData(loggedInData);
-  };
-
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -87,6 +82,13 @@ function App() {
         signInValidation.setApiErr(err);
       });
   };
+
+  const hendleSignOut = () => {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    setLoggedInData(null);
+    setCurrentUser({});
+  }
 
   const handleSignup = ({ password, email, username}) => {
     auth
@@ -153,6 +155,8 @@ function App() {
           onSignUpClick={handleSignUpClick}
           ononSignInClick={handleonSignInClick}
           isLoggedIn={currentUser.isLoggedIn}
+          hendleSignOut={hendleSignOut}
+          handleonSignInClick={handleonSignInClick}
         />
 
         <Routes>
