@@ -15,16 +15,22 @@ function App() {
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
 
-  const handleSwitchPopupClick = () => {
-    setIsSignUpPopupOpen(!isSignUpPopupOpen);
-    setIsSignInPopupOpen(!isSignInPopupOpen)
-  };
+
   
+  const handleRegister = () => {
+    setIsSignUpPopupOpen(false);
+    setIsSuccessPopupOpen(true);
+  };
+
   const handleonSignInClick = () => {
     setIsSignInPopupOpen(true);
+    setIsSuccessPopupOpen(false);
+    setIsSignUpPopupOpen(false);
   };
   const handleSignUpClick = () => {
     setIsSignUpPopupOpen(true);
+    setIsSuccessPopupOpen(false);
+    setIsSignInPopupOpen(false);
   };
 
   const handleSignIn = () => {
@@ -51,7 +57,7 @@ function App() {
         lable='sign in'
         footer='sign up'
         onSignIn={handleSignIn}
-        handleSwitchPopupClick={handleSwitchPopupClick}
+        handleSwitchPopupClick={handleSignUpClick}
       />
 
       <SignUpPopup
@@ -63,7 +69,8 @@ function App() {
         lable='sign up'
         footer='sign in'
         onSignUp={handleSignUp}
-        handleSwitchPopupClick={handleSwitchPopupClick}
+        handleSwitchPopupClick={handleonSignInClick}
+        handleRegister={handleRegister}
       />
 
       <PopupWithText
@@ -73,6 +80,7 @@ function App() {
         title='Registration successfully completed!'
         lable='successful'
         footer='Sign in'
+        handleSwitchPopupClick={handleonSignInClick}
       />
       <Header
         onSignUpClick={handleSignUpClick}

@@ -1,6 +1,8 @@
-export const BASE_URL = "https://api.news.students.nomoredomainssbs.ru/";
 
-export const register = (password, email) => {
+
+export const BASE_URL = "https://ec2-54-85-147-173.compute-1.amazonaws.com";
+
+export const register = ( password, email, name ) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
@@ -33,7 +35,7 @@ export const authorize = (password, email) => {
     });
 };
 
-export const addArticle = (password, email) => {
+export const addArticle = (keyword, title, text, source, image, date, link ) => {
     return fetch(`${BASE_URL}/articles`, {
       method: "POST",
       headers: {
@@ -49,7 +51,7 @@ export const addArticle = (password, email) => {
       });
   };
 
-  export const getArticles = (password, email) => {
+  export const getArticles = () => {
     return fetch(`${BASE_URL}/articles`, {
       method: "GET",
       headers: {
