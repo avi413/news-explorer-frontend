@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import MobileNav from '../MobileNav/MobileNav';
 
-function Header({ onSignUpClick, ononSignInClick }) {
+function Header({ onSignUpClick, ononSignInClick,isLoggedIn }) {
   const [colorChange, setColorchange] = useState(false);
   const location = useLocation();
   const [width, setWidth] = useState(window.innerWidth);
@@ -48,7 +48,6 @@ function Header({ onSignUpClick, ononSignInClick }) {
   }, [location]);
 
   window.addEventListener('scroll', changeNavbarColor);
-
   return (
     <>
       {width > 700 ? (
@@ -59,12 +58,14 @@ function Header({ onSignUpClick, ononSignInClick }) {
               colorChange={colorChange}
               onSignUpClic={onSignUpClick}
               ononSignInClick={ononSignInClick}
+              isLoggedIn={isLoggedIn}
             />
           </div>
         </header>
       ) : (
         <MobileNav
           colorChange={colorChange}
+          isLoggedIn={isLoggedIn}
           onSignUpClic={onSignUpClick}
           ononSignInClick={ononSignInClick}
         />

@@ -6,6 +6,9 @@
     color: inherit;
     border: 1px solid #fff;
 }
+.button:disabled {
+    cursor:not-allowed;
+}
 
 .button_theme_dark {
     border: 1px solid #1A1B22

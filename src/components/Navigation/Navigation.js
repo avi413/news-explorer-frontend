@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
 
 function Navigation(props) {
-  const { colorChange, onSignOutClick, ononSignInClick } = props;
+  const { colorChange, onSignOutClick, ononSignInClick, isLoggedIn } = props;
   const [active, stActive] = useState({ home: '', savedNews: '' });
   const location = window.location.pathname;
   useEffect(() => {
@@ -14,16 +14,16 @@ function Navigation(props) {
       stActive({ home: '', savedNews: 'navigation__link_active' });
     }
   }, [location]);
-
   return (
     <nav className='navigation'>
       <Link className={`navigation__link ${active.savedNews}`} to='/'>
         Home
       </Link>
-      <Link className={`navigation__link ${active.home}`} to='/saved-news'>
+      {isLoggedIn &&<Link className={`navigation__link ${active.home}`} to='/saved-news'>
         Saved articles
-      </Link>
-      {!(1 === 0) ? (
+      </Link>}
+      
+      {!(isLoggedIn) ? (
         <Button
           title='Sign in'
           className={`button_type_clear navigation_signin ${

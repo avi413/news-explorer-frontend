@@ -69,6 +69,7 @@ export const addArticle = (keyword, title, text, source, image, date, link ) => 
 
 
 export const checkToken = (token) => {
+
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {

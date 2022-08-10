@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 
 function MobileNav(props) {
-  const { colorChange } = props;
+  const { colorChange, isLoggedIn } = props;
   const [isOpen, SetIstOpen] = useState(false);
 
   const handleClose = (event) => {
@@ -47,22 +47,23 @@ function MobileNav(props) {
           >
             Home
           </a>
-          <a
+          {isLoggedIn && <a
             className={`mobile-nav__link ${
               !colorChange ? 'mobile-nav__link_type_dark' : ''
             }`}
             href='/saved-news'
           >
             Saved articles
-          </a>
-          {1 === 0 ? (
-            <Button title='Sign in' className='button_type_clear' />
+          </a>}
+          
+          {!isLoggedIn ? (
+            <Button title='Sign in' className='button_type_clear mobile-nav_button' />
           ) : (
             <Button
               title='Sign out'
               className={`${
                 colorChange ? 'button_theme_dark' : ''
-              } mobile-nav_logout`}
+              } mobile-nav_button`}
             />
           )}
         </div>
