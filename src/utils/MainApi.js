@@ -66,7 +66,21 @@ export const addArticle = ({keyword, title, text, source, image, date, link }) =
       });
   };
 
-
+  export const deleteArticle = (id) => {
+    console.log(id);
+    return fetch(`${BASE_URL}/articles/${id._id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        authorization : "Bearer "+ localStorage.getItem("jwt"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then(checkResponse)
+      .then((data) => {
+        return data;
+      });
+  };
 
 export const checkToken = (token) => {
 

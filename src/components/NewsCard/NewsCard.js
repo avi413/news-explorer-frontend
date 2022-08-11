@@ -5,8 +5,19 @@ import * as mainApi from '../../utils/MainApi.js';
 
 function NewsCard(props) {
   const user = useContext(CurrentUserContext);
-
-  const { source, title, publishedAt, description, urlToImage, url, image, keyword, text } = props.data;
+  const location = window.location.pathname;
+  const {
+    source,
+    title,
+    publishedAt,
+    description,
+    urlToImage,
+    url,
+    image,
+    keyword,
+    text,
+    _id,
+  } = props.data;
 
   const [icon, setIcon] = useState({ name: '', className: '' });
   const [activeTag, setactiveTag] = useState('');
@@ -39,15 +50,24 @@ function NewsCard(props) {
   };
 
   const HandleCardIconClick = () => {
-    if(user.isLoggedIn) {
-      mainApi
-      .addArticle({keyword: props.currentKeyword, title, text: description, source: source.name, image: urlToImage, date: publishedAt, link: url})
+    if (user.isLoggedIn && location === '/') {
+      mainApi.addArticle({
+        keyword: props.currentKeyword,
+        title,
+        text: description,
+        source: source.name,
+        image: urlToImage,
+        date: publishedAt,
+        link: url,
+      });
     }
-
-  }
+    if (user.isLoggedIn && location === '/saved-news') {
+      mainApi.deleteArticle({ _id });
+    }
+  };
 
   return (
-    <li className='card'>
+    <li className='card' id={_id}>
       <article className='card__item'>
         <button
           src={icon.name}
@@ -55,14 +75,19 @@ function NewsCard(props) {
           className={`card__icon ${icon.className}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-        
         />
         <button className={`card__tag ${activeTag}`}>{keyword}</button>
 
-        {isShown && !user.isLoggedIn && <button className={`card__save`}>{saveButtonTitle}</button>}
+        {isShown && !user.isLoggedIn && (
+          <button className={`card__save`}>{saveButtonTitle}</button>
+        )}
 
         <a href={url} target='_blank' rel='noreferrer'>
-          <img className='card__image' src={urlToImage || image} alt='card__image' />
+          <img
+            className='card__image'
+            src={urlToImage || image}
+            alt='card__image'
+          />
         </a>
 
         <div className='card__info'>
