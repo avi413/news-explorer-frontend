@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
 
 function Navigation(props) {
-  const { colorChange, onSignOutClick, ononSignInClick, isLoggedIn } = props;
+  const { colorChange, onSignOutClick, ononSignInClick, isLoggedIn,loggedInName } = props;
   const [active, stActive] = useState({ home: '', savedNews: '' });
   const location = window.location.pathname;
   useEffect(() => {
@@ -33,7 +33,7 @@ function Navigation(props) {
         />
       ) : (
         <Button
-          title='Avi'
+          title={loggedInName}
           onClick={onSignOutClick}
           className={`navigation_logout ${
             colorChange ? 'button_theme_dark' : ''

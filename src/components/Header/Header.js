@@ -10,6 +10,7 @@ function Header({
   isLoggedIn,
   hendleSignOut,
   handleonSignInClick,
+  loggedInName
 }) {
   const [colorChange, setColorchange] = useState(false);
   const location = useLocation();
@@ -67,6 +68,7 @@ function Header({
               isLoggedIn={isLoggedIn}
               hendleSignOut={hendleSignOut}
               handleonSignInClick={handleonSignInClick}
+              loggedInName={loggedInName}
             />
           </div>
         </header>

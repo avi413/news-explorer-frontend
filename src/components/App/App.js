@@ -14,6 +14,8 @@ import SignUpPopup from '../SignUpPopup/SignUpPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation/index.js';
 
+import { newsApi } from '../../utils/NewsApi';
+
 function App() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
@@ -32,6 +34,11 @@ function App() {
     username:''
   });
 
+  const get = async (q) =>{
+    const data = await newsApi.getNews(q);
+    console.log(data.articles);
+  }  
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -39,7 +46,7 @@ function App() {
         .checkToken(jwt)
         .then((res) => {
           if (res) {
-            const loggedInData = res.data.email;
+            const loggedInData = res;
             setLoggedIn(true);
             setLoggedInData(loggedInData);
             setCurrentUser({ jwt: res, isLoggedIn: true });
@@ -157,6 +164,7 @@ function App() {
           isLoggedIn={currentUser.isLoggedIn}
           hendleSignOut={hendleSignOut}
           handleonSignInClick={handleonSignInClick}
+          loggedInName = {loggedInData.data.name}
         />
 
         <Routes>
