@@ -26,18 +26,17 @@ function App() {
 
   const signInValidation = useFormWithValidation({
     password: '',
-    email: ''
+    email: '',
   });
   const signUpValidation = useFormWithValidation({
     password: '',
     email: '',
-    username:''
+    username: '',
   });
 
-  const get = async (q) =>{
-    const data = await newsApi.getNews(q);
-    console.log(data.articles);
-  }  
+  const getNews = async (q) => {
+    return await newsApi.getNews(q);
+  };
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -48,19 +47,17 @@ function App() {
           if (res) {
             const loggedInData = res;
             setLoggedIn(true);
-            setLoggedInData(loggedInData);
+            setLoggedInData(loggedInData.data);
             setCurrentUser({ jwt: res, isLoggedIn: true });
           }
         })
         .then(() => {
           setLoggedIn(true);
         });
-    } else {
-
     }
   }, [loggedIn]);
 
-  const handleonSignInClick = () => {
+  const handleSignInClick = () => {
     setIsSignInPopupOpen(true);
     setIsSuccessPopupOpen(false);
     setIsSignUpPopupOpen(false);
@@ -95,9 +92,9 @@ function App() {
     setLoggedIn(false);
     setLoggedInData(null);
     setCurrentUser({});
-  }
+  };
 
-  const handleSignup = ({ password, email, username}) => {
+  const handleSignup = ({ password, email, username }) => {
     auth
       .register(password, email, username)
       .then((res) => {
@@ -146,7 +143,7 @@ function App() {
           footer='sign in'
           formValidation={signUpValidation}
           handleSignup={handleSignup}
-          handleSwitchPopupClick={handleonSignInClick}
+          handleSwitchPopupClick={handleSignInClick}
         />
 
         <PopupWithText
@@ -156,19 +153,18 @@ function App() {
           title='Registration successfully completed!'
           lable='successful'
           footer='Sign in'
-          handleSwitchPopupClick={handleonSignInClick}
+          handleSwitchPopupClick={handleSignInClick}
         />
         <Header
           onSignUpClick={handleSignUpClick}
-          ononSignInClick={handleonSignInClick}
+          onSignInClick={handleSignInClick}
           isLoggedIn={currentUser.isLoggedIn}
           hendleSignOut={hendleSignOut}
-          handleonSignInClick={handleonSignInClick}
-          loggedInName = {loggedInData.data.name}
+          loggedInName={loggedInData && loggedInData.name}
         />
 
         <Routes>
-          <Route exact path='/' element={<Main />} />
+          <Route exact path='/' element={<Main getNews={getNews} />} />
           <Route
             exact
             path='/saved-news'

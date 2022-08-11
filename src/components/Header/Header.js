@@ -6,11 +6,10 @@ import MobileNav from '../MobileNav/MobileNav';
 
 function Header({
   onSignUpClick,
-  ononSignInClick,
+  onSignInClick,
   isLoggedIn,
   hendleSignOut,
-  handleonSignInClick,
-  loggedInName
+  loggedInName,
 }) {
   const [colorChange, setColorchange] = useState(false);
   const location = useLocation();
@@ -63,11 +62,10 @@ function Header({
             <h1 className='header__logo'>NewsExplorer</h1>
             <Navigation
               colorChange={colorChange}
-              onSignUpClic={onSignUpClick}
-              ononSignInClick={ononSignInClick}
+              onSignUpClick={onSignUpClick}
+              onSignInClick={onSignInClick}
               isLoggedIn={isLoggedIn}
               hendleSignOut={hendleSignOut}
-              handleonSignInClick={handleonSignInClick}
               loggedInName={loggedInName}
             />
           </div>
@@ -76,10 +74,9 @@ function Header({
         <MobileNav
           colorChange={colorChange}
           isLoggedIn={isLoggedIn}
-          onSignUpClic={onSignUpClick}
-          ononSignInClick={ononSignInClick}
+          onSignUpClick={onSignUpClick}
+          onSignInClick={onSignInClick}
           hendleSignOut={hendleSignOut}
-          handleonSignInClick={handleonSignInClick}
         />
       )}
     </>

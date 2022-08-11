@@ -8,30 +8,29 @@ import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
 
 import { useRef, useState } from 'react';
-function Main() {
+function Main(props) {
   const inputEl = useRef(null);
   const [isPreloader, setIsPreloader] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isResults, setIsResults] = useState(false);
+  const [currentNews, setCurrentNews] = useState(false);
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
     setIsResults(false);
-    setIsNotFound(false)
+    setIsNotFound(false);
     setIsPreloader(true);
     setIsSearching(true);
-    setTimeout(() => {
-      if(inputEl.current.value ==='') {
-        setIsNotFound(true)
-      } else {
+    if (inputEl.current.value === '') {
+      setIsNotFound(true);
+    } else {
+      props.getNews(inputEl.current.value).then((res) => {
         setIsResults(true);
-      }
-      
-      setIsSearching(false);
-    }, 2000);
-  
-   
+        setCurrentNews(res.articles);
+        setIsSearching(false);
+      });
+    }
   };
 
   return (
@@ -44,7 +43,11 @@ function Main() {
             account.
           </p>
           <SearchForm>
-            <input ref={inputEl} className='search-form__input' placeholder='Enter topic' />
+            <input
+              ref={inputEl}
+              className='search-form__input'
+              placeholder='Enter topic'
+            />
             <Button
               title='Search'
               className='button_type_blue search-form__button'
@@ -56,9 +59,10 @@ function Main() {
       {isPreloader && (
         <Preloader>
           <div className='main-list'>
-          {isResults && <Results />}
-          {isNotFound && <NotFound />}
-          {isSearching && <Loading />}
+            {isResults && <Results currentNews={currentNews}/>}
+
+            {isNotFound && <NotFound />}
+            {isSearching && <Loading />}
           </div>
         </Preloader>
       )}

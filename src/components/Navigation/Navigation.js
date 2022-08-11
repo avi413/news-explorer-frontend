@@ -4,9 +4,9 @@ import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
 
 function Navigation(props) {
-  const { colorChange, onSignOutClick, ononSignInClick, isLoggedIn,loggedInName } = props;
   const [active, stActive] = useState({ home: '', savedNews: '' });
   const location = window.location.pathname;
+
   useEffect(() => {
     if (location === '/saved-news') {
       stActive({ home: 'navigation__link_active', savedNews: '' });
@@ -14,31 +14,32 @@ function Navigation(props) {
       stActive({ home: '', savedNews: 'navigation__link_active' });
     }
   }, [location]);
+
   return (
     <nav className='navigation'>
       <Link className={`navigation__link ${active.savedNews}`} to='/'>
         Home
       </Link>
-      {isLoggedIn &&<Link className={`navigation__link ${active.home}`} to='/saved-news'>
+      {props.isLoggedIn &&<Link className={`navigation__link ${active.home}`} to='/saved-news'>
         Saved articles
       </Link>}
       
-      {!(isLoggedIn) ? (
+      {!(props.isLoggedIn) ? (
         <Button
           title='Sign in'
           className={`button_type_clear navigation_signin ${
-            colorChange ? 'button_theme_dark' : ''
+            props.colorChange ? 'button_theme_dark' : ''
           }`}
-          onClick={ononSignInClick}
+          onClick={props.onSignInClick}
         />
       ) : (
         <Button
-          title={loggedInName}
-          onClick={onSignOutClick}
-          className={`navigation_logout ${
-            colorChange ? 'button_theme_dark' : ''
+          title={props.loggedInName}
+          onClick={props.hendleSignOut}
+          className={`${
+            props.colorChange ? 'button_theme_dark navigation_logout' : 'navigation_logout-w'
           }`}
-        />
+        ></Button>
       )}
     </nav>
   );

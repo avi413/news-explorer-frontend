@@ -19,9 +19,24 @@
     border-bottom: 2px solid;
 }
 
-.navigation_logout {
+.navigation_logout, .navigation_logout-w {
     height: 48px;
-    padding: 0 19px;
+    padding: 0 49px 0  19px;
+}
+.navigation_logout::after {
+    content: url('../../images/logout.svg');
+    position: absolute; 
+    top: 50%; 
+    margin-top: -12px;
+    margin-left: 12px;
+}
+
+.navigation_logout-w::after {
+    content: url('../../images/logout-w.svg');
+    position: absolute; 
+    top: 50%; 
+    margin-top: -12px;
+    margin-left: 12px;
 }
 
 .navigation_signin {
