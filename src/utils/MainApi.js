@@ -35,12 +35,12 @@ export const authorize = (password, email) => {
     });
 };
 
-export const addArticle = (keyword, title, text, source, image, date, link ) => {
+export const addArticle = ({keyword, title, text, source, image, date, link }) => {
     return fetch(`${BASE_URL}/articles`, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        authorization :  localStorage.getItem("jwt"),
+        authorization : "Bearer "+ localStorage.getItem("jwt"),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ keyword, title, text, source, image, date, link }),
@@ -56,7 +56,7 @@ export const addArticle = (keyword, title, text, source, image, date, link ) => 
       method: "GET",
       headers: {
         Accept: "application/json",
-        authorization :  localStorage.getItem("jwt"),
+        authorization : "Bearer "+ localStorage.getItem("jwt"),
         "Content-Type": "application/json",
       },
     })

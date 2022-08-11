@@ -4,8 +4,8 @@ class Api {
   constructor(baseUrl, apiKey) {
     this._baseUrl = baseUrl;
     this._apiKey = apiKey;
-    this._from = dateFormat(new Date());
-    this._to = dateFormat(addDays(new Date(), 7));
+    this._from = dateFormat(addDays(new Date(), -7));
+    this._to = dateFormat(new Date());
   }
 
   getNews(q) {

@@ -1,14 +1,19 @@
 import './NewsCard.css';
-import Demo from '../../images/demo.png';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import * as mainApi from '../../utils/MainApi.js';
 
 function NewsCard(props) {
-  const { source, title, publishedAt, description, urlToImage } = props.data;
+  const user = useContext(CurrentUserContext);
+
+  const { source, title, publishedAt, description, urlToImage, url, image, keyword, text } = props.data;
+
   const [icon, setIcon] = useState({ name: '', className: '' });
   const [activeTag, setactiveTag] = useState('');
   const [isShown, setIsShown] = useState(false);
   const [bookmark, setBookmark] = useState('card__bookmark');
   const [trash, setTrash] = useState('card__trash');
+
   const saveButtonTitle =
     icon.name === 'Bookmark' ? 'Sign in to save articles' : 'Remove from saved';
 
@@ -21,6 +26,7 @@ function NewsCard(props) {
       setactiveTag('');
     }
   }, [trash, bookmark]);
+
   const handleMouseEnter = () => {
     setIsShown(true);
     setBookmark('card__bookmark-bold');
@@ -32,34 +38,41 @@ function NewsCard(props) {
     setTrash('card__trash');
   };
 
+  const HandleCardIconClick = () => {
+    if(user.isLoggedIn) {
+      mainApi
+      .addArticle({keyword:'123', title, text: description, source: source.name, image: urlToImage, date: publishedAt, link: url})
+    }
+
+  }
+
   return (
     <li className='card'>
       <article className='card__item'>
         <button
           src={icon.name}
+          onClick={HandleCardIconClick}
           className={`card__icon ${icon.className}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+        
         />
-        <button className={`card__tag ${activeTag}`}>{props.tagTitle}</button>
+        <button className={`card__tag ${activeTag}`}>{keyword}</button>
 
-        {isShown && <button className={`card__save`}>{saveButtonTitle}</button>}
+        {isShown && !user.isLoggedIn && <button className={`card__save`}>{saveButtonTitle}</button>}
 
-        <a href='/' target='_blank' rel='noreferrer'>
-          <img className='card__image' src={urlToImage} alt='card__image' />
+        <a href={url} target='_blank' rel='noreferrer'>
+          <img className='card__image' src={urlToImage || image} alt='card__image' />
         </a>
 
         <div className='card__info'>
           <span className='card__date'>{publishedAt}</span>
-
           <h3 className='card__title'>{title}</h3>
-
           <blockquote className='card__quote' cite='Avi'>
-            {description}
+            {description || text}
           </blockquote>
-
           <a className='card__link' href='/' target='_blank' rel='noreferrer'>
-            {source.name}
+            {source.name || source}
           </a>
         </div>
       </article>

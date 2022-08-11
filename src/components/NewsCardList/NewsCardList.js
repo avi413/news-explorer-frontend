@@ -1,6 +1,6 @@
 import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
-import { useState } from 'react';
+
 function NewsCardList({ currentNews, size }) {
   return (
     <ul className='card-list'>

@@ -1,8 +1,6 @@
 import './SignUpPopup.css';
-import * as auth from '../../utils/MainApi.js';
-import { useFormWithValidation } from '../../hooks/useFormWithValidation/index.js';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function SignUpPopup(props) {
@@ -13,7 +11,6 @@ function SignUpPopup(props) {
   const handleSubmit= (event) => {
     event.preventDefault();
     props.handleSignup({username,password,email});
-    console.log(apiErr);
   };
 
   return (

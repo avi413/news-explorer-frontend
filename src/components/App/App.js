@@ -38,6 +38,13 @@ function App() {
     return await newsApi.getNews(q);
   };
 
+  const getSavedNews = async () => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      return await auth.getArticles()  
+    }
+  };
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -164,7 +171,7 @@ function App() {
         />
 
         <Routes>
-          <Route exact path='/' element={<Main getNews={getNews} />} />
+          <Route exact path='/' element={<Main getNews={getNews}/>} />
           <Route
             exact
             path='/saved-news'
@@ -173,7 +180,7 @@ function App() {
                 isLoggedIn={currentUser.isLoggedIn}
                 redirectPath='/'
               >
-                <SavedNews />
+                <SavedNews getSavedNews={getSavedNews}/>
               </ProtectedRoute>
             }
           />
