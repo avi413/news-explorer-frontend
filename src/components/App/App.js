@@ -41,7 +41,7 @@ function App() {
   const getSavedNews = async () => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      return await auth.getArticles()  
+      return await auth.getArticles(); 
     }
   };
 

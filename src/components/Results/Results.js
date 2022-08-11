@@ -3,7 +3,7 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import Button from '../Button/Button';
 import { useState } from 'react';
 
-function Results({ currentNews }) {
+function Results({ currentNews, currentKeyword }) {
   const [size, setSize] = useState(3);
 
   return (
@@ -12,6 +12,7 @@ function Results({ currentNews }) {
       <NewsCardList
         currentNews={currentNews}
         size={size}
+        currentKeyword={currentKeyword}
       />
       <Button
         className='button_type_white results__button'

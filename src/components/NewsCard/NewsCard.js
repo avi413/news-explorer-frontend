@@ -41,7 +41,7 @@ function NewsCard(props) {
   const HandleCardIconClick = () => {
     if(user.isLoggedIn) {
       mainApi
-      .addArticle({keyword:'123', title, text: description, source: source.name, image: urlToImage, date: publishedAt, link: url})
+      .addArticle({keyword: props.currentKeyword, title, text: description, source: source.name, image: urlToImage, date: publishedAt, link: url})
     }
 
   }

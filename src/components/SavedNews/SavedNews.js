@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 function SavedNews(props) {
   const [currentNews, setCurrentNews] = useState(false);
   const [keys, setKeys] = useState([]);
+  
   const subTitle =
     keys.length > 2
       ? `${keys[0]}, ${keys[1]}, and ${keys.length - 2} other`
@@ -14,10 +15,10 @@ function SavedNews(props) {
   useEffect(() => {
     props.getSavedNews().then((res) => {
       setCurrentNews(res.data);
-      const unique = [...new Set(currentNews.map((item) => item.keyword))];
+      const unique = [...new Set(res.data.map((item) => item.keyword))];
       setKeys(unique);
     });
-  });
+  },[]);
 
   return (
     <div className='saved-news'>

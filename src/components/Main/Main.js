@@ -8,6 +8,7 @@ import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
 
 import { useRef, useState } from 'react';
+
 function Main(props) {
   const inputEl = useRef(null);
   const [isPreloader, setIsPreloader] = useState(false);
@@ -15,18 +16,21 @@ function Main(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [isResults, setIsResults] = useState(false);
   const [currentNews, setCurrentNews] = useState(false);
+  const [currentKeyword, setCurrentKeyword] = useState('')
 
   const handleClick = async (event) => {
+    setCurrentKeyword(inputEl.current.value)
     event.preventDefault();
     setIsResults(false);
     setIsNotFound(false);
     setIsPreloader(true);
     setIsSearching(true);
-    if (inputEl.current.value === '') {
+    if (currentKeyword === '') {
       setIsNotFound(true);
       setIsPreloader(false);
     } else {
-      props.getNews(inputEl.current.value).then((res) => {
+      
+      props.getNews(currentKeyword).then((res) => {
         
         if(res.articles.length === 0) {
           setIsNotFound(true);
@@ -67,7 +71,7 @@ function Main(props) {
       {isPreloader && (
         <Preloader>
           <div className='main-list'>
-            {isResults && <Results currentNews={currentNews}/>}
+            {isResults && <Results currentNews={currentNews} currentKeyword={currentKeyword}/>}
             {isNotFound && <NotFound />}
             {isSearching && <Loading />}
           </div>
