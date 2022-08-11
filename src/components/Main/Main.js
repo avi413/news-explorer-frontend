@@ -24,11 +24,19 @@ function Main(props) {
     setIsSearching(true);
     if (inputEl.current.value === '') {
       setIsNotFound(true);
+      setIsPreloader(false);
     } else {
       props.getNews(inputEl.current.value).then((res) => {
-        setIsResults(true);
-        setCurrentNews(res.articles);
-        setIsSearching(false);
+        
+        if(res.articles.length === 0) {
+          setIsNotFound(true);
+          setIsSearching(false);
+        } else {
+          setIsResults(true);
+          setCurrentNews(res.articles);
+          setIsSearching(false);
+        }
+
       });
     }
   };
