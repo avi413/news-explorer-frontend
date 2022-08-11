@@ -35,7 +35,7 @@ function Navigation(props) {
       ) : (
         <Button
           title={props.loggedInName}
-          onClick={props.hendleSignOut}
+          onClick={props.handleSignOut}
           className={`${
             props.colorChange ? 'button_theme_dark navigation_logout' : 'navigation_logout-w'
           }`}

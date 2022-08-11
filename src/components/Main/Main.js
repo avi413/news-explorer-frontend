@@ -68,7 +68,6 @@ function Main(props) {
         <Preloader>
           <div className='main-list'>
             {isResults && <Results currentNews={currentNews}/>}
-
             {isNotFound && <NotFound />}
             {isSearching && <Loading />}
           </div>

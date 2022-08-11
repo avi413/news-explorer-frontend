@@ -54,10 +54,12 @@ function NewsCard(props) {
 
           <h3 className='card__title'>{title}</h3>
 
-          <blockquote className='card__quote' cite='Avi'>{description}</blockquote>
+          <blockquote className='card__quote' cite='Avi'>
+            {description}
+          </blockquote>
 
           <a className='card__link' href='/' target='_blank' rel='noreferrer'>
-            treehugger
+            {source.name}
           </a>
         </div>
       </article>

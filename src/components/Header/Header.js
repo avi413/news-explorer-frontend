@@ -8,7 +8,7 @@ function Header({
   onSignUpClick,
   onSignInClick,
   isLoggedIn,
-  hendleSignOut,
+  handleSignOut,
   loggedInName,
 }) {
   const [colorChange, setColorchange] = useState(false);
@@ -65,7 +65,7 @@ function Header({
               onSignUpClick={onSignUpClick}
               onSignInClick={onSignInClick}
               isLoggedIn={isLoggedIn}
-              hendleSignOut={hendleSignOut}
+              handleSignOut={handleSignOut}
               loggedInName={loggedInName}
             />
           </div>
@@ -76,7 +76,7 @@ function Header({
           isLoggedIn={isLoggedIn}
           onSignUpClick={onSignUpClick}
           onSignInClick={onSignInClick}
-          hendleSignOut={hendleSignOut}
+          handleSignOut={handleSignOut}
         />
       )}
     </>

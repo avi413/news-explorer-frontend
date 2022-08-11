@@ -87,7 +87,7 @@ function App() {
       });
   };
 
-  const hendleSignOut = () => {
+  const handleSignOut = () => {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
     setLoggedInData(null);
@@ -159,7 +159,7 @@ function App() {
           onSignUpClick={handleSignUpClick}
           onSignInClick={handleSignInClick}
           isLoggedIn={currentUser.isLoggedIn}
-          hendleSignOut={hendleSignOut}
+          handleSignOut={handleSignOut}
           loggedInName={loggedInData && loggedInData.name}
         />
 

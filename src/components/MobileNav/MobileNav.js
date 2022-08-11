@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 
 function MobileNav(props) {
-  const { colorChange, isLoggedIn, hendleSignOut,handleSignInClick } = props;
+  const { colorChange, isLoggedIn, handleSignOut,handleSignInClick } = props;
   const [isOpen, SetIstOpen] = useState(false);
 
   const handleClose = (event) => {
@@ -67,7 +67,7 @@ function MobileNav(props) {
           ) : (
             <Button
               title='Sign out'
-              onClick={hendleSignOut}
+              onClick={handleSignOut}
               className={`${
                 colorChange ? 'button_theme_dark' : ''
               } mobile-nav_button`}
