@@ -31,7 +31,7 @@ function SavedNews(props) {
       .catch((err) => {
         setIsResults(false);
       });
-  }, []);
+  }, [props]);
 
   useEffect(() => {
     currentNews && setKeys([...new Set(currentNews.map((item) => item.keyword))]);
