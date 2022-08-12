@@ -1,12 +1,15 @@
 import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCardList({ currentNews, size, currentKeyword }) {
+function NewsCardList({ currentNews, size, currentKeyword,HandleCardIconClick }) {
+
+
+  
   return (
     <ul className='card-list'>
       {currentNews &&
         currentNews.slice(0, size).map(function (card, index) {
-          return <NewsCard key={index} data={card} currentKeyword={currentKeyword}/>;
+          return <NewsCard key={index} data={card} currentKeyword={currentKeyword} HandleCardIconClick={HandleCardIconClick}/>;
         })}
     </ul>
   );

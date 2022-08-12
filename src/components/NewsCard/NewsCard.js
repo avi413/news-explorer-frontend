@@ -16,6 +16,7 @@ function NewsCard(props) {
     image,
     keyword,
     text,
+    date,
     _id,
   } = props.data;
 
@@ -49,7 +50,7 @@ function NewsCard(props) {
     setTrash('card__trash');
   };
 
-  const HandleCardIconClick = () => {
+  const HandleCardIconClick = (id) => {
     if (user.isLoggedIn && location === '/') {
       mainApi.addArticle({
         keyword: props.currentKeyword,
@@ -60,9 +61,8 @@ function NewsCard(props) {
         date: publishedAt,
         link: url,
       });
-    }
-    if (user.isLoggedIn && location === '/saved-news') {
-      mainApi.deleteArticle({ _id });
+    } else {
+      props.HandleCardIconClick(id)
     }
   };
 
@@ -71,7 +71,7 @@ function NewsCard(props) {
       <article className='card__item'>
         <button
           src={icon.name}
-          onClick={HandleCardIconClick}
+          onClick={() => HandleCardIconClick(_id)}
           className={`card__icon ${icon.className}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -91,7 +91,7 @@ function NewsCard(props) {
         </a>
 
         <div className='card__info'>
-          <span className='card__date'>{publishedAt}</span>
+          <span className='card__date'>{publishedAt || date}</span>
           <h3 className='card__title'>{title}</h3>
           <blockquote className='card__quote' cite='Avi'>
             {description || text}

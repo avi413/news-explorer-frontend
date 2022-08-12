@@ -2,11 +2,11 @@ import './SavedNews.css';
 import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import { useEffect, useState } from 'react';
+import * as mainApi from '../../utils/MainApi.js';
 
 function SavedNews(props) {
   const [currentNews, setCurrentNews] = useState(false);
   const [keys, setKeys] = useState([]);
-  
   const subTitle =
     keys.length > 2
       ? `${keys[0]}, ${keys[1]}, and ${keys.length - 2} other`
@@ -18,7 +18,19 @@ function SavedNews(props) {
       const unique = [...new Set(res.data.map((item) => item.keyword))];
       setKeys(unique);
     });
-  },[]);
+  }, []);
+
+  const HandleCardIconClick = (id) => {
+    console.log(id);
+    mainApi
+      .deleteArticle(id)
+      .then(() => {
+        setCurrentNews(currentNews.filter((item) => item._id !== id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className='saved-news'>
@@ -31,7 +43,11 @@ function SavedNews(props) {
       </section>
       <Preloader>
         <div className='saved-news__list'>
-          <NewsCardList currentNews={currentNews} size='100' />
+          <NewsCardList
+            currentNews={currentNews}
+            size='100'
+            HandleCardIconClick={HandleCardIconClick}
+          />
         </div>
       </Preloader>
     </div>

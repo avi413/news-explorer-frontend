@@ -68,7 +68,7 @@ export const addArticle = ({keyword, title, text, source, image, date, link }) =
 
   export const deleteArticle = (id) => {
     console.log(id);
-    return fetch(`${BASE_URL}/articles/${id._id}`, {
+    return fetch(`${BASE_URL}/articles/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
