@@ -42,6 +42,7 @@ function NewsCard(props) {
   }, [trash, bookmark]);
 
   const handleMouseEnter = () => {
+    if (!user.isLoggedIn) setDisabled(true); 
     if (bookmark !== 'card__bookmark-marked') {
       if(icon.name === 'Trash' || !user.isLoggedIn) setIsShown(true);
       setBookmark('card__bookmark-bold');
@@ -73,7 +74,7 @@ function NewsCard(props) {
           setDisabled(true);
         });
     } else {
-      props.HandleCardIconClick(id);
+      if (user.isLoggedIn) props.HandleCardIconClick(id);
     }
   };
 

@@ -93,6 +93,9 @@
     cursor: pointer;
 }
 
+.card__icon:disabled {
+    cursor:not-allowed;
+}
 .card__save {
     position: absolute;
     top: 24px;
@@ -142,10 +145,6 @@
 
 .card__bookmark-marked::before {
     content: url('../../images/bookmark-b.svg');
-}
-
-.card__bookmark-marked:disabled {
-    cursor:not-allowed;
 }
 
 .card__trash::before {
