@@ -62,7 +62,7 @@ function App() {
           setLoggedIn(true);
         });
     }
-  }, [loggedIn]);
+  }, [loggedIn,loggedInData,currentUser]);
 
   const handleSignInClick = () => {
     setIsSignInPopupOpen(true);
