@@ -43,7 +43,7 @@ function NewsCard(props) {
 
   const handleMouseEnter = () => {
     if (bookmark !== 'card__bookmark-marked') {
-      setIsShown(true);
+      if(icon.name === 'Trash' || !user.isLoggedIn) setIsShown(true);
       setBookmark('card__bookmark-bold');
       setTrash('card__trash-bold');
     }
@@ -89,8 +89,8 @@ function NewsCard(props) {
           disabled={disabled}
         />
         <button className={`card__tag ${activeTag}`}>{keyword}</button>
-
-        {isShown && !user.isLoggedIn && (
+        {isShown && (
+          
           <button className={`card__save`}>{saveButtonTitle}</button>
         )}
 
