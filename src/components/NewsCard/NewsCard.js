@@ -2,6 +2,7 @@ import './NewsCard.css';
 import { useEffect, useState, useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as mainApi from '../../utils/MainApi.js';
+import {parseDate} from '../../utils/dateHandler.js'
 
 function NewsCard(props) {
   const user = useContext(CurrentUserContext);
@@ -102,7 +103,7 @@ function NewsCard(props) {
         </a>
 
         <div className='card__info'>
-          <span className='card__date'>{publishedAt || date}</span>
+          <span className='card__date'>{parseDate(publishedAt || date)}</span>
           <h3 className='card__title'>{title}</h3>
           <blockquote className='card__quote' cite='Avi'>
             {description || text}
