@@ -25,7 +25,7 @@ function NewsCard(props) {
   const [isShown, setIsShown] = useState(false);
   const [bookmark, setBookmark] = useState('card__bookmark');
   const [trash, setTrash] = useState('card__trash');
-
+  const [disabled, setDisabled] = useState(false);
   const saveButtonTitle =
     icon.name === 'Bookmark' ? 'Sign in to save articles' : 'Remove from saved';
 
@@ -40,29 +40,38 @@ function NewsCard(props) {
   }, [trash, bookmark]);
 
   const handleMouseEnter = () => {
-    setIsShown(true);
-    setBookmark('card__bookmark-bold');
-    setTrash('card__trash-bold');
+    if (bookmark !== 'card__bookmark-marked') {
+      setIsShown(true);
+      setBookmark('card__bookmark-bold');
+      setTrash('card__trash-bold');
+    }
   };
   const handleMouseLeave = () => {
-    setIsShown(false);
-    setBookmark('card__bookmark');
-    setTrash('card__trash');
+    if (bookmark !== 'card__bookmark-marked') {
+      setIsShown(false);
+      setBookmark('card__bookmark');
+      setTrash('card__trash');
+    }
   };
 
   const HandleCardIconClick = (id) => {
     if (user.isLoggedIn && location === '/') {
-      mainApi.addArticle({
-        keyword: props.currentKeyword,
-        title,
-        text: description,
-        source: source.name,
-        image: urlToImage,
-        date: publishedAt,
-        link: url,
-      });
+      mainApi
+        .addArticle({
+          keyword: props.currentKeyword,
+          title,
+          text: description,
+          source: source.name,
+          image: urlToImage,
+          date: publishedAt,
+          link: url,
+        })
+        .then((res) => {
+          setBookmark('card__bookmark-marked');
+          setDisabled(true);
+        });
     } else {
-      props.HandleCardIconClick(id)
+      props.HandleCardIconClick(id);
     }
   };
 
@@ -75,6 +84,7 @@ function NewsCard(props) {
           className={`card__icon ${icon.className}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          disabled={disabled}
         />
         <button className={`card__tag ${activeTag}`}>{keyword}</button>
 

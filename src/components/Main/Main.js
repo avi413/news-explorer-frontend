@@ -16,10 +16,10 @@ function Main(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [isResults, setIsResults] = useState(false);
   const [currentNews, setCurrentNews] = useState(false);
-  const [currentKeyword, setCurrentKeyword] = useState('')
+  const [currentKeyword, setCurrentKeyword] = useState('');
 
   const handleClick = async (event) => {
-    setCurrentKeyword(inputEl.current.value)
+    setCurrentKeyword(inputEl.current.value);
     event.preventDefault();
     setIsResults(false);
     setIsNotFound(false);
@@ -29,10 +29,8 @@ function Main(props) {
       setIsNotFound(true);
       setIsPreloader(false);
     } else {
-      
       props.getNews(currentKeyword).then((res) => {
-        
-        if(res.articles.length === 0) {
+        if (res.articles.length === 0) {
           setIsNotFound(true);
           setIsSearching(false);
         } else {
@@ -40,7 +38,6 @@ function Main(props) {
           setCurrentNews(res.articles);
           setIsSearching(false);
         }
-
       });
     }
   };
@@ -71,8 +68,13 @@ function Main(props) {
       {isPreloader && (
         <Preloader>
           <div className='main-list'>
-            {isResults && <Results currentNews={currentNews} currentKeyword={currentKeyword}/>}
-            {isNotFound && <NotFound />}
+            {isResults && (
+              <Results
+                currentNews={currentNews}
+                currentKeyword={currentKeyword}
+              />
+            )}
+            {isNotFound && <NotFound title='Nothing found' subtitle='Sorry, but nothing matched your search terms.'/>}
             {isSearching && <Loading />}
           </div>
         </Preloader>

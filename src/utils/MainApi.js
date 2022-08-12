@@ -48,7 +48,10 @@ export const addArticle = ({keyword, title, text, source, image, date, link }) =
       .then(checkResponse)
       .then((data) => {
         return data;
-      });
+      })
+      .catch((err)=> {
+        console.log(err);
+      })
   };
 
   export const getArticles = () => {
@@ -63,11 +66,13 @@ export const addArticle = ({keyword, title, text, source, image, date, link }) =
       .then(checkResponse)
       .then((data) => {
         return data;
-      });
+      })
+      .catch((err)=> {
+        console.log(err);
+      })
   };
 
   export const deleteArticle = (id) => {
-    console.log(id);
     return fetch(`${BASE_URL}/articles/${id}`, {
       method: "DELETE",
       headers: {
