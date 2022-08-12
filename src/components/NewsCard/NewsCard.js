@@ -16,6 +16,7 @@ function NewsCard(props) {
     image,
     keyword,
     text,
+    link,
     date,
     _id,
   } = props.data;
@@ -92,7 +93,7 @@ function NewsCard(props) {
           <button className={`card__save`}>{saveButtonTitle}</button>
         )}
 
-        <a href={url} target='_blank' rel='noreferrer'>
+        <a href={url || link} target='_blank' rel='noreferrer'>
           <img
             className='card__image'
             src={urlToImage || image}
@@ -106,7 +107,7 @@ function NewsCard(props) {
           <blockquote className='card__quote' cite='Avi'>
             {description || text}
           </blockquote>
-          <a className='card__link' href='/' target='_blank' rel='noreferrer'>
+          <a className='card__link' href={url || link} target='_blank' rel='noreferrer'>
             {source.name || source}
           </a>
         </div>
