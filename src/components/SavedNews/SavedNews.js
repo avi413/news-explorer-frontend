@@ -26,13 +26,17 @@ function SavedNews(props) {
         if (res) {
           setIsResults(true);
           setCurrentNews(res.data);
-          setKeys([...new Set(res.data.map((item) => item.keyword))]);
         }
       })
       .catch((err) => {
-        setIsResults(false)
+        setIsResults(false);
       });
   }, []);
+
+  useEffect(() => {
+    currentNews && setKeys([...new Set(currentNews.map((item) => item.keyword))]);
+    if(currentNews.length === 0) setIsResults(false)
+  },[currentNews])
 
   const HandleCardIconClick = (id) => {
     mainApi
@@ -40,7 +44,6 @@ function SavedNews(props) {
       .then(() => {
         setCurrentNews(currentNews.filter((item) => item._id !== id));
         setKeys([...new Set(currentNews.map((item) => item.keyword))]);
-        setIsResults(false)
       })
       .catch((err) => {
         console.log(err);
@@ -65,7 +68,12 @@ function SavedNews(props) {
               HandleCardIconClick={HandleCardIconClick}
             />
           )}
-          {!isResults && <NotFound  title='Nothing saved' subtitle='Sorry, but nothing saved yet.' />}
+          {!isResults && (
+            <NotFound
+              title='Nothing saved'
+              subtitle='Sorry, but nothing saved yet.'
+            />
+          )}
         </div>
       </Preloader>
     </div>
