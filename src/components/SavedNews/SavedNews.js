@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function SavedNews(props) {
+  const { getSavedNews } = props;
   const user = useContext(CurrentUserContext);
 
   const [currentNews, setCurrentNews] = useState(false);
@@ -19,9 +20,9 @@ function SavedNews(props) {
       ? `${keys[0]}, ${keys[1]}, and ${keys.length - 2} other`
       : keys.join(', ');
 
+      
   useEffect(() => {
-    props
-      .getSavedNews()
+    getSavedNews()
       .then((res) => {
         if (res) {
           setIsResults(true);
@@ -31,12 +32,12 @@ function SavedNews(props) {
       .catch((err) => {
         setIsResults(false);
       });
-  }, [props]);
-
+  }, [getSavedNews]);
   useEffect(() => {
-    currentNews && setKeys([...new Set(currentNews.map((item) => item.keyword))]);
-    if(currentNews.length === 0) setIsResults(false)
-  },[currentNews])
+    currentNews &&
+      setKeys([...new Set(currentNews.map((item) => item.keyword))]);
+    if (currentNews.length === 0) setIsResults(false);
+  }, [currentNews]);
 
   const HandleCardIconClick = (id) => {
     mainApi
@@ -54,7 +55,7 @@ function SavedNews(props) {
     <div className='saved-news'>
       <section className='saved-news__data'>
         <h5 className='saved-news__page-title'>Saved articles</h5>
-        <h2 className='saved-news__title'>{`${user.jwt.data.name}, you have ${currentNews.length} saved articles`}</h2>
+        <h2 className='saved-news__title'>{`${user.jwt.data.name}, you have ${currentNews.length || 0} saved articles`}</h2>
         <p className='saved-news__type'>
           By keywords: <span className='saved-news__keywords'>{subTitle}</span>
         </p>

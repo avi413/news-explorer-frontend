@@ -58,11 +58,10 @@ function App() {
             setCurrentUser({ jwt: res, isLoggedIn: true });
           }
         })
-        .then(() => {
-          setLoggedIn(true);
-        });
+        .catch((err) => console.log(err));
+
     }
-  }, [loggedIn,loggedInData,currentUser]);
+  }, [currentUser.isLoggedIn,loggedIn]);
 
   const handleSignInClick = () => {
     setIsSignInPopupOpen(true);

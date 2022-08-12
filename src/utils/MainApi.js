@@ -1,6 +1,6 @@
 
 
-export const BASE_URL = "https://ec2-54-85-147-173.compute-1.amazonaws.com";
+export const BASE_URL = "https://api.avid.students.nomoredomainssbs.ru";
 
 export const register = ( password, email, name ) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -49,9 +49,6 @@ export const addArticle = ({keyword, title, text, source, image, date, link }) =
       .then((data) => {
         return data;
       })
-      .catch((err)=> {
-        console.log(err);
-      })
   };
 
   export const getArticles = () => {
@@ -66,9 +63,6 @@ export const addArticle = ({keyword, title, text, source, image, date, link }) =
       .then(checkResponse)
       .then((data) => {
         return data;
-      })
-      .catch((err)=> {
-        console.log(err);
       })
   };
 
@@ -105,5 +99,6 @@ function checkResponse(res) {
   if (res.ok) {
     return res.json();
   }
+
   return Promise.reject(`Error: ${res.status}  ${res.statusText}`);
 }
