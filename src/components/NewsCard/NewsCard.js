@@ -27,7 +27,7 @@ function NewsCard(props) {
   const [isShown, setIsShown] = useState(false);
   const [bookmark, setBookmark] = useState('card__bookmark');
   const [trash, setTrash] = useState('card__trash');
-  const [disabled, setDisabled] = useState(false);
+  const [savedId, setSavedId] = useState(null);
   const saveButtonTitle =
     icon.name === 'Bookmark' ? 'Sign in to save articles' : 'Remove from saved';
 
@@ -40,6 +40,11 @@ function NewsCard(props) {
       setactiveTag('');
     }
   }, [trash, bookmark]);
+
+  useEffect(() => {
+    console.log(props.data);
+    if (_id) setBookmark('card__bookmark-marked');
+  }, []);
 
   const handleMouseEnter = () => {
     if (bookmark !== 'card__bookmark-marked') {
@@ -56,8 +61,12 @@ function NewsCard(props) {
     }
   };
 
-  const HandleCardIconClick = (id) => {
-    if (user.isLoggedIn && location === '/') {
+  const HandleCardIconClick = (event) => {
+    if (
+      user.isLoggedIn &&
+      location === '/' &&
+      bookmark !== 'card__bookmark-marked'
+    ) {
       mainApi
         .addArticle({
           keyword: props.currentKeyword,
@@ -70,26 +79,64 @@ function NewsCard(props) {
         })
         .then((res) => {
           setBookmark('card__bookmark-marked');
-          setDisabled(true);
+          setSavedId(res.data._id);
+
+          const foundIndex = JSON.parse(
+            localStorage.getItem('articles')
+          ).findIndex(
+            (article) =>
+              article.title === res.data.title &&
+              article.source.name === res.data.source
+          );
+
+          const arr = JSON.parse(localStorage.getItem('articles'));
+          arr[foundIndex]._id = res.data._id;
+
+          localStorage.setItem('articles', JSON.stringify(arr));
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      if (user.isLoggedIn) props.HandleCardIconClick(id);
+      if (user.isLoggedIn && icon.name === 'Trash') {
+        props.HandleCardIconClick(event.target.id);
+      } else if (bookmark === 'card__bookmark-marked') {
+        mainApi
+          .deleteArticle(event.target.id)
+          .then((res) => {
+            console.log('sd');
+            setBookmark('card__bookmark-bold');
+
+            const foundIndex = JSON.parse(
+              localStorage.getItem('articles')
+            ).findIndex(
+              (article) =>
+                article.title === res.data.title &&
+                article.source.name === res.data.source
+            );
+
+            const arr = JSON.parse(localStorage.getItem('articles'));
+            console.log(arr, foundIndex);
+            delete arr[foundIndex]._id;
+            localStorage.setItem('articles', JSON.stringify(arr));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
   };
 
   return (
-    <li className='card' id={_id}>
+    <li className='card'>
       <article className='card__item'>
         <button
+          id={_id || savedId}
           src={icon.name}
-          onClick={() => HandleCardIconClick(_id)}
+          onClick={(event) => HandleCardIconClick(event)}
           className={`card__icon ${icon.className}`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          disabled={disabled}
         />
         <button className={`card__tag ${activeTag}`}>{keyword}</button>
         {isShown && <button className={`card__save`}>{saveButtonTitle}</button>}
@@ -105,7 +152,7 @@ function NewsCard(props) {
         <div className='card__info'>
           <span className='card__date'>{parseDate(publishedAt || date)}</span>
           <h3 className='card__title'>{title}</h3>
-          <blockquote className='card__quote' cite='Avi'>
+          <blockquote className='card__quote' cite={source.name || source}>
             {description || text}
           </blockquote>
           <a

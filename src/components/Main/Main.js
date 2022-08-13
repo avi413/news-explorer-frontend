@@ -18,7 +18,7 @@ function Main(props) {
   const [currentNews, setCurrentNews] = useState(
     JSON.parse(localStorage.getItem('articles'))
   );
-  const [currentKeyword, setCurrentKeyword] = useState('');
+  const [currentKeyword, setCurrentKeyword] = useState(localStorage.getItem('currentKeyword'));
   const [nodata, setNodata] = useState({
     title: 'Nothing found',
     subtitle: 'Sorry, but nothing matched your search terms.',
@@ -57,10 +57,14 @@ function Main(props) {
 
   useEffect(() => {
     localStorage.setItem('articles', JSON.stringify(currentNews));
-  }, [currentNews]);
+    localStorage.setItem('currentKeyword', currentKeyword);
+
+  
+  }, [currentNews,currentKeyword]);
 
   useEffect(() => {
     const articles = JSON.parse(localStorage.getItem('articles'));
+    const keyword = localStorage.getItem('currentKeyword');
 
     if (articles) {
       setIsPreloader(true);
@@ -68,7 +72,12 @@ function Main(props) {
       setCurrentNews(articles);
       setIsSearching(false);
     }
+    if(keyword) {
+      setCurrentKeyword(keyword);
+    }
   }, []);
+
+
   return (
     <div className='main'>
       <section className='main__hero'>

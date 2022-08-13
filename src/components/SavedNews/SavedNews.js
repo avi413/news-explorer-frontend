@@ -46,9 +46,23 @@ function SavedNews(props) {
   const HandleCardIconClick = (id) => {
     mainApi
       .deleteArticle(id)
-      .then(() => {
+      .then((res) => {
         setCurrentNews(currentNews.filter((item) => item._id !== id));
         setKeys([...new Set(currentNews.map((item) => item.keyword))]);
+
+        const foundIndex = JSON.parse(
+          localStorage.getItem('articles')
+        ).findIndex(
+          (article) =>
+            article.title === res.data.title &&
+            article.source.name === res.data.source
+        );
+
+        const arr = JSON.parse(localStorage.getItem('articles'));
+
+        arr[foundIndex]._id = null;
+
+        localStorage.setItem('articles', JSON.stringify(arr));
       })
       .catch((err) => {
         console.log(err);
