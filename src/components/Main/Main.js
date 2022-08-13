@@ -22,11 +22,8 @@ function Main(props) {
     subtitle: 'Sorry, but nothing matched your search terms.',
   });
   const handleClick = (event) => {
-    setCurrentKeyword(inputEl.current.value);
     event.preventDefault();
-
-
-    console.log(inputEl.current.value);
+    setCurrentKeyword(inputEl.current.value);
     setIsResults(false);
     setIsNotFound(false);
     setIsPreloader(true);
