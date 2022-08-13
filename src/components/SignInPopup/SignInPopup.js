@@ -1,13 +1,19 @@
-import './SignInPopup.css'
+import './SignInPopup.css';
+
 import React, { useRef } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
+
 function SignInPopup(props) {
   const inputEl = useRef(null);
+  const { values, handleChange, errors, apiErr, isValid } = props.formValidation;
 
+  const {password,email} = values;
   const handleSubmit = (event) => {
-  };
+    event.preventDefault();
+    props.handleSignin({password,email});
 
+  }
   return (
     <PopupWithForm
       title="Sign In"
@@ -19,6 +25,7 @@ function SignInPopup(props) {
       onSubmit={handleSubmit}
       footer={props.footer}
       handleSwitchPopupClick={props.handleSwitchPopupClick}
+      isValid={isValid}
     >
        <label className="popup__label" htmlFor="Email">Email</label>
       <input
@@ -29,8 +36,10 @@ function SignInPopup(props) {
         type="email"
         placeholder="Enter email"
         name="email"
+        value={email || ''}
+        onChange={handleChange}
       />
-      <span className="popup__input-error password-input-error"/>
+      <span className='popup__input-error'>{errors.email}</span>
       <label className="popup__label" htmlFor="Password">password</label>
      <input
         ref={inputEl}
@@ -39,9 +48,11 @@ function SignInPopup(props) {
         required
         type="password"
         placeholder="Enter password"
+        value={password || ''}
         name="password"
+        onChange={handleChange}
       />
-      <span className="popup__input-error password-input-error"/>
+      <span className='popup__input-error'>{errors.password || apiErr}</span>
     </PopupWithForm>
   );
 }

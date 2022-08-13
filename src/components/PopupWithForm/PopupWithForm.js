@@ -3,12 +3,12 @@ import Button from '../Button/Button';
 
 function PopupWithForm(props) {
   const open = props.isOpen ? " popup_opened" : "";
-
+  const valid = props.isValid ? "button_type_blue" : "button_type_disable";
   return (
     <div className={`popup popup_type_${props.name} ${open}`}>
       <button
         aria-label="close popup"
-        className="popup__close popup__close_place_profile button button_opacity_m"
+        className="popup__close popup__close_place_profile button_opacity_m"
         onClick={props.close}
       />
       <div className="popup__container">
@@ -23,8 +23,9 @@ function PopupWithForm(props) {
             {props.children}
             <Button
               type="submit"
-              className={`button_type_blue popup__button-submit`}
+              className={`${valid} popup__button-submit`}
               title = {props.lable}
+              disabled = {!props.isValid} 
             />
           </fieldset>
         </form>

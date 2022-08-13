@@ -15,6 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "react-scripts build && scp -r ./build/* avi413@avid.students.nomoredomainssbs.ru:/home/avi413/frontend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,6 +1,14 @@
 .card__item {
     position: relative;
     width: 100%;
+    min-height: 576px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card {
@@ -13,9 +21,11 @@
 }
 
 .card__image {
-    height: 100%;
     width: 100%;
     border-radius: 15px 15px 0 0;
+    object-fit: cover;
+    height: 272px;
+
 }
 
 .card__date {
@@ -38,6 +48,12 @@
     line-height: 30px;
     margin: 12px 0 16px;
     color: #1A1B22;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; 
+    line-clamp: 2;
 
 }
 
@@ -77,6 +93,9 @@
     cursor: pointer;
 }
 
+.card__icon:disabled {
+    cursor:not-allowed;
+}
 .card__save {
     position: absolute;
     top: 24px;
@@ -122,6 +141,10 @@
 
 .card__bookmark-bold::before {
     content: url('../../images/bookmark-bold.svg');
+}
+
+.card__bookmark-marked::before {
+    content: url('../../images/bookmark-b.svg');
 }
 
 .card__trash::before {
