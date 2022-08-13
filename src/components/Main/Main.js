@@ -7,7 +7,7 @@ import Results from '../Results/Results';
 import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Main(props) {
   const inputEl = useRef(null);
@@ -15,7 +15,9 @@ function Main(props) {
   const [isNotFound, setIsNotFound] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isResults, setIsResults] = useState(false);
-  const [currentNews, setCurrentNews] = useState('');
+  const [currentNews, setCurrentNews] = useState(
+    JSON.parse(localStorage.getItem('articles'))
+  );
   const [currentKeyword, setCurrentKeyword] = useState('');
   const [nodata, setNodata] = useState({
     title: 'Nothing found',
@@ -50,9 +52,24 @@ function Main(props) {
           setNodata({ title: 'error', subtitle: err });
         });
     }
-    inputEl.current.value = ''
+    inputEl.current.value = '';
   };
 
+  useEffect(() => {
+    localStorage.setItem('articles', JSON.stringify(currentNews));
+  }, [currentNews]);
+
+  useEffect(() => {
+    const articles = JSON.parse(localStorage.getItem('articles'));
+
+    if (articles) {
+      setIsPreloader(true);
+      setIsResults(true);
+      setCurrentNews(articles);
+
+      setIsSearching(false);
+    }
+  }, []);
   return (
     <div className='main'>
       <section className='main__hero'>

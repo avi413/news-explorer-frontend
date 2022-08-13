@@ -2,7 +2,7 @@ import './NewsCard.css';
 import { useEffect, useState, useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import * as mainApi from '../../utils/MainApi.js';
-import {parseDate} from '../../utils/dateHandler.js'
+import { parseDate } from '../../utils/dateHandler.js';
 
 function NewsCard(props) {
   const user = useContext(CurrentUserContext);
@@ -43,7 +43,7 @@ function NewsCard(props) {
 
   const handleMouseEnter = () => {
     if (bookmark !== 'card__bookmark-marked') {
-      if(icon.name === 'Trash' || !user.isLoggedIn) setIsShown(true);
+      if (icon.name === 'Trash' || !user.isLoggedIn) setIsShown(true);
       setBookmark('card__bookmark-bold');
       setTrash('card__trash-bold');
     }
@@ -74,7 +74,7 @@ function NewsCard(props) {
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
     } else {
       if (user.isLoggedIn) props.HandleCardIconClick(id);
     }
@@ -92,10 +92,7 @@ function NewsCard(props) {
           disabled={disabled}
         />
         <button className={`card__tag ${activeTag}`}>{keyword}</button>
-        {isShown && (
-          
-          <button className={`card__save`}>{saveButtonTitle}</button>
-        )}
+        {isShown && <button className={`card__save`}>{saveButtonTitle}</button>}
 
         <a href={url || link} target='_blank' rel='noreferrer'>
           <img
@@ -111,7 +108,12 @@ function NewsCard(props) {
           <blockquote className='card__quote' cite='Avi'>
             {description || text}
           </blockquote>
-          <a className='card__link' href={url || link} target='_blank' rel='noreferrer'>
+          <a
+            className='card__link'
+            href={url || link}
+            target='_blank'
+            rel='noreferrer'
+          >
             {source.name || source}
           </a>
         </div>
