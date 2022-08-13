@@ -85,6 +85,7 @@
     font-weight: 400;
     line-height: 15px;
     color: #FF0000;
+    display:block;
 }
 
 .popup__form-set {

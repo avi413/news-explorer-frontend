@@ -5,12 +5,13 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function SignUpPopup(props) {
   const inputEl = useRef(null);
-  const { values, handleChange, errors, apiErr, isValid } = props.formValidation
-  const {username,password,email} = values;
+  const { values, handleChange, errors, apiErr, isValid } =
+    props.formValidation;
+  const { username, password, email } = values;
 
-  const handleSubmit= (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    props.handleSignup({username,password,email});
+    props.handleSignup({ username, password, email });
   };
 
   return (
@@ -40,6 +41,7 @@ function SignUpPopup(props) {
         value={email || ''}
         onChange={handleChange}
       />
+      <span className='popup__input-error'>{errors.email}</span>
       <label className='popup__label' htmlFor='Password'>
         password
       </label>
@@ -55,6 +57,7 @@ function SignUpPopup(props) {
         value={password || ''}
         onChange={handleChange}
       />
+      <span className='popup__input-error'>{errors.password}</span>
       <label className='popup__label' htmlFor='Username'>
         Username
       </label>
@@ -70,7 +73,7 @@ function SignUpPopup(props) {
         minLength='2'
         onChange={handleChange}
       />
-      <span className='popup__input-error'>{apiErr || errors.email || errors.password || errors.username}</span>
+      <span className='popup__input-error'>{apiErr || errors.username}</span>
     </PopupWithForm>
   );
 }

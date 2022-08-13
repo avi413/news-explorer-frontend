@@ -39,6 +39,7 @@ function SignInPopup(props) {
         value={email || ''}
         onChange={handleChange}
       />
+      <span className='popup__input-error'>{errors.email}</span>
       <label className="popup__label" htmlFor="Password">password</label>
      <input
         ref={inputEl}
@@ -51,7 +52,7 @@ function SignInPopup(props) {
         name="password"
         onChange={handleChange}
       />
-      <span className='popup__input-error'>{errors.email || errors.password || apiErr}</span>
+      <span className='popup__input-error'>{errors.password || apiErr}</span>
     </PopupWithForm>
   );
 }
