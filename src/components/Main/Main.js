@@ -7,7 +7,7 @@ import Results from '../Results/Results';
 import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 function Main(props) {
   const inputEl = useRef(null);
