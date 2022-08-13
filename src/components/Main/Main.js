@@ -98,6 +98,7 @@ function Main(props) {
               <Results
                 currentNews={currentNews}
                 currentKeyword={currentKeyword}
+                maxSize={currentNews.length}
               />
             )}
             {isNotFound && (
