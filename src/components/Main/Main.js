@@ -49,7 +49,7 @@ function Main(props) {
         .catch((err) => {
           setIsNotFound(true);
           setIsSearching(false);
-          setNodata({ title: 'error', subtitle: err });
+          setNodata({ title: 'Sorry, something went wrong during the request', subtitle: 'There may be a connection issue or the server may be down. Please try again later.' });
         });
     }
     inputEl.current.value = '';
@@ -66,7 +66,6 @@ function Main(props) {
       setIsPreloader(true);
       setIsResults(true);
       setCurrentNews(articles);
-
       setIsSearching(false);
     }
   }, []);
