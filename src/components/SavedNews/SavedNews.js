@@ -14,13 +14,16 @@ function SavedNews(props) {
   const [currentNews, setCurrentNews] = useState(false);
   const [isResults, setIsResults] = useState(false);
   const [keys, setKeys] = useState([]);
+  const [nodata, setNodata] = useState({
+    title: 'Nothing saved',
+    subtitle: 'Sorry, but nothing saved yet',
+  });
 
   const subTitle =
     keys.length > 2
       ? `${keys[0]}, ${keys[1]}, and ${keys.length - 2} other`
       : keys.join(', ');
 
-      
   useEffect(() => {
     getSavedNews()
       .then((res) => {
@@ -31,6 +34,7 @@ function SavedNews(props) {
       })
       .catch((err) => {
         setIsResults(false);
+        setNodata({ title: 'error', subtitle: err });
       });
   }, [getSavedNews]);
   useEffect(() => {
@@ -55,7 +59,9 @@ function SavedNews(props) {
     <div className='saved-news'>
       <section className='saved-news__data'>
         <h5 className='saved-news__page-title'>Saved articles</h5>
-        <h2 className='saved-news__title'>{`${user.jwt.data.name}, you have ${currentNews.length || 0} saved articles`}</h2>
+        <h2 className='saved-news__title'>{`${user.jwt.data.name}, you have ${
+          currentNews.length || 0
+        } saved articles`}</h2>
         <p className='saved-news__type'>
           By keywords: <span className='saved-news__keywords'>{subTitle}</span>
         </p>
@@ -70,10 +76,7 @@ function SavedNews(props) {
             />
           )}
           {!isResults && (
-            <NotFound
-              title='Nothing saved'
-              subtitle='Sorry, but nothing saved yet.'
-            />
+            <NotFound title={nodata.title} subtitle={nodata.subtitle} />
           )}
         </div>
       </Preloader>

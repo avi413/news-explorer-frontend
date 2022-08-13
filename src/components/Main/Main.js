@@ -7,7 +7,7 @@ import Results from '../Results/Results';
 import Loading from '../Loading/Loading';
 import NotFound from '../NotFound/NotFound';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Main(props) {
   const inputEl = useRef(null);
@@ -15,31 +15,45 @@ function Main(props) {
   const [isNotFound, setIsNotFound] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isResults, setIsResults] = useState(false);
-  const [currentNews, setCurrentNews] = useState(false);
+  const [currentNews, setCurrentNews] = useState('');
   const [currentKeyword, setCurrentKeyword] = useState('');
-
-  const handleClick = async (event) => {
+  const [nodata, setNodata] = useState({
+    title: 'Nothing found',
+    subtitle: 'Sorry, but nothing matched your search terms.',
+  });
+  const handleClick = (event) => {
     setCurrentKeyword(inputEl.current.value);
     event.preventDefault();
+
+
+    console.log(inputEl.current.value);
     setIsResults(false);
     setIsNotFound(false);
     setIsPreloader(true);
     setIsSearching(true);
-    if (currentKeyword === '') {
+    if (inputEl.current.value === '') {
       setIsNotFound(true);
       setIsPreloader(false);
     } else {
-      props.getNews(currentKeyword).then((res) => {
-        if (res.articles.length === 0) {
+      props
+        .getNews(inputEl.current.value)
+        .then((res) => {
+          if (res.articles.length === 0) {
+            setIsNotFound(true);
+            setIsSearching(false);
+          } else {
+            setCurrentNews(res.articles);
+            setIsResults(true);
+            setIsSearching(false);
+          }
+        })
+        .catch((err) => {
           setIsNotFound(true);
           setIsSearching(false);
-        } else {
-          setIsResults(true);
-          setCurrentNews(res.articles);
-          setIsSearching(false);
-        }
-      });
+          setNodata({ title: 'error', subtitle: err });
+        });
     }
+    inputEl.current.value = ''
   };
 
   return (
@@ -51,7 +65,7 @@ function Main(props) {
             Find the latest news on any topic and save them in your personal
             account.
           </p>
-          <SearchForm>
+          <SearchForm handleClick={handleClick}>
             <input
               ref={inputEl}
               className='search-form__input'
@@ -60,7 +74,6 @@ function Main(props) {
             <Button
               title='Search'
               className='button_type_blue search-form__button'
-              onClick={handleClick}
             />
           </SearchForm>
         </div>
@@ -74,7 +87,9 @@ function Main(props) {
                 currentKeyword={currentKeyword}
               />
             )}
-            {isNotFound && <NotFound title='Nothing found' subtitle='Sorry, but nothing matched your search terms.'/>}
+            {isNotFound && (
+              <NotFound title={nodata.title} subtitle={nodata.subtitle} />
+            )}
             {isSearching && <Loading />}
           </div>
         </Preloader>

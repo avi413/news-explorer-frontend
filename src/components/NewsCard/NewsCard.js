@@ -72,7 +72,10 @@ function NewsCard(props) {
         .then((res) => {
           setBookmark('card__bookmark-marked');
           setDisabled(true);
-        });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     } else {
       if (user.isLoggedIn) props.HandleCardIconClick(id);
     }
