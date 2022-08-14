@@ -42,9 +42,8 @@ function NewsCard(props) {
   }, [trash, bookmark]);
 
   useEffect(() => {
-    console.log(props.data);
     if (_id) setBookmark('card__bookmark-marked');
-  }, []);
+  }, [_id]);
 
   const handleMouseEnter = () => {
     if (bookmark !== 'card__bookmark-marked') {
@@ -104,7 +103,6 @@ function NewsCard(props) {
         mainApi
           .deleteArticle(event.target.id)
           .then((res) => {
-            console.log('sd');
             setBookmark('card__bookmark-bold');
 
             const foundIndex = JSON.parse(
@@ -116,7 +114,6 @@ function NewsCard(props) {
             );
 
             const arr = JSON.parse(localStorage.getItem('articles'));
-            console.log(arr, foundIndex);
             delete arr[foundIndex]._id;
             localStorage.setItem('articles', JSON.stringify(arr));
           })
