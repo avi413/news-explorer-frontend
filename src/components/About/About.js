@@ -9,9 +9,7 @@ function About() {
         <h2 className='about__title'>About the author</h2>
         <p className='about__desc'>
           Hello, My name is Avi Dalal and I am a FullStack web Developer, I used
-          to develop solutions for websites using various technologies such as
-          JavaScript, CSS, and HTML, ReactJS framework for UI. NodeJs and
-          EXPRESS for the BackEnd
+          to develop solutions for websites using various technologies focused on Reactjs, javascript and Nodejs.
         </p>
       </div>
     </section>

@@ -1,6 +1,6 @@
 
 
-export const BASE_URL = "https://api.avid.students.nomoredomainssbs.ru";
+export const BASE_URL = "https://newsapi.avidalal.net";
 
 export const register = ( password, email, name ) => {
   return fetch(`${BASE_URL}/signup`, {
