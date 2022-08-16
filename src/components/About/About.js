@@ -1,5 +1,5 @@
 import './About.css';
-import Avi from '../../images/Avi.png';
+import Avi from '../../images/Avi.avif';
 
 function About() {
   return (
