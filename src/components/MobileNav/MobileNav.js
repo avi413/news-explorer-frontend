@@ -1,9 +1,11 @@
 import './MobileNav.css';
+
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import { useState } from 'react';
 
 function MobileNav(props) {
-  const { colorChange, isLoggedIn, handleSignOut,handleSignInClick } = props;
+  const { colorChange, isLoggedIn, handleSignOut,onSignInClick } = props;
   const [isOpen, SetIstOpen] = useState(false);
 
   const handleClose = (event) => {
@@ -48,21 +50,21 @@ function MobileNav(props) {
             Home
           </a>
           {isLoggedIn && (
-            <a
+            <Link
               className={`mobile-nav__link ${
                 !colorChange ? 'mobile-nav__link_type_dark' : ''
               }`}
-              href='/saved-news'
+              to='/saved-news'
             >
               Saved articles
-            </a>
+            </Link>
           )}
 
           {!isLoggedIn ? (
             <Button
               title='Sign in'
               className='button_type_clear mobile-nav_button'
-              onClick={handleSignInClick}
+              onClick={onSignInClick}
             />
           ) : (
             <Button
